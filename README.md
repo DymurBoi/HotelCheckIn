@@ -1,2 +1,14 @@
 # HotelCheckIn
-Information Management 2 Project. Hotel Check In System
+Information Management 2 Project. Hotel Check In system
+
+## FUNCTIONAL REQUIREMENTS:
++ User Registration and Authentication
++ Profile Management
++ Check-In/Out Functionality
++ Sorting Room Categories
++ Admin/Management Features
++ Reservation
+## Project Thingies
++ ### Gantt Chart: (insert link here)
++ ### ERD: https://lucid.app/lucidchart/462e9219-4281-495e-9e21-0738e96c3821/edit?viewport_loc=-1243%2C-194%2C4344%2C1900%2C0_0&invitationId=inv_b68969f9-dff7-48f7-a1ea-9f615092185d
++ ### UI/UX Design: https://www.figma.com/design/Zijdajrx19zIHtqJmugrH4/IM2?node-id=0-1&t=0VgVDsGqaw3Wh3ge-1
