@@ -1,0 +1,25 @@
+{% extends 'base/nav.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}Login{% endblock %}
+</head>
+<body>
+{% block content %}
+<div class="login-container">
+    <div class="login-form">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            
+            <button type="submit">Login</button>
+        </form>
+
+       <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>  
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
