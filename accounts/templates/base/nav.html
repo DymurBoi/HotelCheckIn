@@ -1,0 +1,37 @@
+<!-- base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <header>
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <a href="{% url 'login' %}">
+                <button class="btn">Login</button>
+            </a>
+            <a href="{% url 'login' %}">
+                <button class="btn">Book Now</button>
+            </a>
+           
+        </div>
+    </header>
+</head>
+<body syle="background-image: url('{% static 'images/logo' %}');">
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

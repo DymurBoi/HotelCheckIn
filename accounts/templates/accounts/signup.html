@@ -1,0 +1,23 @@
+    <!-- signup.html -->
+    {% extends 'base/nav.html' %}
+    {% load static %}
+    {% block title %}Sign Up{% endblock %}
+
+    {% block content %}
+    <div class="login-container">
+     
+    <div class="login-form">
+        <h2>Sign Up</h2>
+        <form method="post">
+        <div class= "input">
+            {% csrf_token %}
+            {{form.as_p}}
+        </div>
+        <button type="submit">Sign Up</button>
+        </form>
+        <p>Already had an account? <a href="{% url 'login' %}">Log in</a></p>  
+    </div>
+    </div>
+
+
+    {% endblock %}
