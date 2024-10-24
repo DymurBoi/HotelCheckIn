@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/sample_style.css' %}">
+    <title>User Profile</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <a href="{% url 'user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
+            <button class="btn book-btn">Book Now</button>
+        </div>
+    </header>
+    <div class="centered-text-profile">
+    <br/><br/><br/>
+    <h1>Profile</h1>
+    <br/>
+        <img class="img-pfp" src="{{users.profile_pic.url}}" alt="user pfp" />
+    
+    <table>
+        
+        <tr>
+            <td><strong>Username:</strong></td>
+            <td>{{ users.name }}</td>
+        </tr>
+        <tr>
+            <td><strong>Address:</strong></td>
+            <td>{{  users.address }}</td>
+        </tr>
+        <tr>
+            <td><strong>Email:</strong></td>
+            <td>{{ users.email }}</td>
+        </tr>
+        <tr>
+            <td><strong>Phone Number:</strong></td>
+            <td>{{ users.phone_num }}</td>
+        </tr>
+    </table>
+    <a href="{% url 'update_profile' users.pk %}"><button class="btn" >Edit Profile</button></a>
+    </div>
+
+        
+
+</body>
+</html>
