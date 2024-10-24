@@ -8,7 +8,7 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Redirect to login after successful signup
+            return redirect('account:login')  # Redirect to login after successful signup
     else:
         form = CustomUserCreationForm()
     
@@ -31,7 +31,7 @@ def login_view(request):
                 user = CustomUser.objects.get(username=username)
                 if user.check_password(password):  # Use check_password method
                     login(request, user)
-                    return redirect('success')  # Redirect to the homepage
+                    return redirect('account:homepage')  # Redirect to the homepage
                 else:
                     form.add_error(None, 'Invalid username or password')
             except CustomUser.DoesNotExist:

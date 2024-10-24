@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rooms</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sample_style.css' %}">
 </head>
 <body>
     <header>
@@ -20,7 +20,7 @@
             </ul>
         </nav>
         <div class="header-buttons">
-            <a href="{% url 'login' %}">
+            <a href="{% url 'account:login' %}">
                 <button class="btn">Login</button>
             </a>
             <button class="btn book-btn">Book Now</button>

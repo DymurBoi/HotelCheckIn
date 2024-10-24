@@ -18,7 +18,7 @@ def update_user(request, pk):
         form = UserForm(request.POST,request.FILES or None, instance=users)
         if form.is_valid(): 
             form.save()
-            return redirect('user_profile',pk=users.pk)  
+            return redirect('profile:user_profile',pk=users.pk)  
     else:
         form = UserForm(instance=users)  
     return render(request, 'update_profile.html', {'users': users, 'form': form})
