@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
     <link rel="stylesheet" href="{% static 'css/sample_style.css' %}">
-    <title>Sample</title>
 </head>
 <body>
     <header>
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
         <nav>
             <ul>
                 <li><a href="#home">HOME</a></li>
@@ -19,9 +20,18 @@
             </ul>
         </nav>
         <div class="header-buttons">
-            <button class="btn">Login</button>
+            <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
             <button class="btn book-btn">Book Now</button>
         </div>
     </header>
+<main></main>
+    <div class="banner">
+        <img src="{% static 'images/background.jpg' %}" alt="Banner">
+        <div class="centered-text">
+            <h3>Room and Suites</h3>
+            <p>The elegant luxury bedrooms in this gallery showcase custom interior designs & decorating ideas. View pictures and find your perfect luxury bedroom design.</p>
+            <a href="#container_mt-5">Learn More</a>
+        </div>
+    </div>
 </body>
 </html>

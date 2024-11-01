@@ -31,7 +31,8 @@ def login_view(request):
                 user = CustomUser.objects.get(username=username)
                 if user.check_password(password):  # Use check_password method
                     login(request, user)
-                    return redirect('account:homepage')  # Redirect to the homepage
+                    user_id=user.id
+                    return redirect('profile:home',user_id)  # Redirect to the homepage
                 else:
                     form.add_error(None, 'Invalid username or password')
             except CustomUser.DoesNotExist:

@@ -66,14 +66,6 @@ header li {
     transition: background-color 0.3s;
 }
 
-.centered-text-profile .header-buttons .btn{
-    font-size: 15px;
-}
-.header-buttons .btn{
-    padding: 15px 20px;
-    font-size: 16px;
-}
-
 .btn:hover {
     background-color: #7a5b43;
 }
