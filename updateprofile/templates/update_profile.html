@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}">
+    <title>Update User</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'account:homepage' %}">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
+            <button class="btn book-btn">Book Now</button>
+        </div>
+    </header>
+    <div class="centered-text-profile">
+    <h1>Update Profile</h1>
+    <form method="POST" class="form-update" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="profile-container">
+            <div class="profile-header">
+                <img src="{{ users.profile_pic.url }}" alt="User profile picture" class="profile-pic">
+                {{ form.profile_pic }}
+                
+            </div>
+        <div class="info-container">
+            <div class="info-group">
+                <label for="id_email">First Name</label>
+                {{ form.firstname }}
+                <span class="edit-icon">✎</span>
+            </div>
+            <div class="info-container">
+                <div class="info-group">
+                    <label for="id_email">Last Name</label>
+                    {{ form.lastname }}
+                    <span class="edit-icon">✎</span>
+                </div>
+        <div class="info-container">
+            <div class="info-group">
+                <label for="id_email">Email</label>
+                {{ form.username }}
+                <span class="edit-icon">✎</span>
+            </div>
+        <div class="info-container">
+            <div class="info-group">
+                <label for="id_email">Address</label>
+                {{ form.address }}
+                <span class="edit-icon">✎</span>
+            </div>
+        <div class="header-buttons">
+            <button class="btn apply-btn" type="submit">Save</button>
+            <a class="btn apply-btn" href="{% url 'profile:user_profile' users.pk %}">
+                <button class="btn-a">Back to Profile</button>
+            </a>            
+         </div>
+    </form>
+    
+    <div/>
+</body>
+</html>

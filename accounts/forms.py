@@ -23,4 +23,4 @@ class CustomUserCreationForm(forms.ModelForm):
     
 class CustomUserLoginForm(forms.Form):
     username = forms.EmailField(max_length=150)
-    password = forms.CharField(max_length=150)
+    password = forms.CharField(widget=forms.PasswordInput,max_length=150)
