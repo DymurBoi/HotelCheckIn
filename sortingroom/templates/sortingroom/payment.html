@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Reservation</title>
+    <link rel="stylesheet" href="{% static 'sortingroom/payment.css' %}">
+    <script src="{% static 'sortingroom/room_list.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <button class="btn">Login</button>
+            <button class="btn book-btn">Book Now</button>
+        </div>
+    </header>
+
+    <!--
+    <h1>Reserve Room: {{ reservation.room.room_type }}</h1>
+    <p>Price: ${{ reservation.room.room_price }} per night</p>
+    <p>Total Amount: ${{ total_cost }}</p>
+    -->
+
+    <div class="centerpoint">
+        <div class="payment_form">
+            <form method="POST">
+                <h2>How do you want to pay?</h2><br>
+                {% csrf_token %}
+
+                <div class="payment">
+                    <div>
+                        <label for="payment-method">Payment Method</label>
+                        <select id="payment-method" name="payment-method" required onchange="updatePaymentMessage('{{ total_cost }}')">
+                            <option value="" disabled selected>Select Payment Method</option>
+                            <option value="GCASH">Gcash</option>
+                            <option value="PAYMAYA">Paymaya</option>
+                            <option value="PAYPAL">Paypal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="msg-container">
+                    <ul id="payment-messages" style="display: none">
+                        <li id="payment-message1"></li>
+                        <li id="payment-message2"></li>
+                    </ul>
+                </div>  
+                <div class="button-wrapper">
+                    <button type="submit" class="confirm-btn">Confirm ></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
