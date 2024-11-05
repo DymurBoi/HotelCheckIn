@@ -23,7 +23,7 @@ urlpatterns = [
     path('profile/', include('updateprofile.urls')), 
     path('account/', include('accounts.urls')),
     path('sort/', include('sortingroom.urls')),
-    path('', include(('accounts.urls', 'account'), namespace='account')),
+    path('', include(('accounts.urls'), namespace='account')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 

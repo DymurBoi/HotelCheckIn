@@ -50,8 +50,9 @@ header li {
 }
 
 .header-buttons {
-    display: flex;
-    gap: 15px; /* Increased spacing between buttons */
+    display: flex;        /* Use flexbox layout */
+    align-items: center; /* Center items vertically */
+    gap: 15px;  
 }
 
 .btn {

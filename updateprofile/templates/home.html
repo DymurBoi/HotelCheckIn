@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rooms</title>
     <link rel="stylesheet" href="{% static 'css/sample_style.css' %}">
+    <script src="{% static 'js/reserve_script.js' %}" defer></script>
 </head>
 <body>
     <header>
         <img src="{% static 'images/logo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="{% url 'profile:home' users.pk %}">HOME</a></li>
+                <li><a href="{% url 'sort:room_list'%}">EXPLORE</a></li>
                 <li><a href="#rooms">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
@@ -21,7 +22,7 @@
         </nav>
         <div class="header-buttons">
             <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
-            <button class="btn book-btn">Book Now</button>
+            <button onclick="viewReservations('{{users.pk}}')"class="btn book-btn">Reservations</button>
         </div>
     </header>
 <main></main>

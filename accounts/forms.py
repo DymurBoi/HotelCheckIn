@@ -1,6 +1,9 @@
 from django import forms
 from .models import CustomUser
-
+class ReservationConnect(forms.ModelForm):
+    model=CustomUser
+    fields=['reservation']
+    
 class CustomUserCreationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, label='Password')
     

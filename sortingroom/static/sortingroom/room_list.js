@@ -34,7 +34,7 @@ function closeDialog() {
 
 function goToReserve(roomId) {
     if (roomId) {
-        window.location.href = `/reserve_room/${roomId}/`;  // Update if route differs
+        window.location.href = `http://127.0.0.1:8000/sort/reserve_room/${roomId}/`;  // Updated to use the full URL
     } else {
         console.error("Room ID is missing. Cannot redirect.");
     }

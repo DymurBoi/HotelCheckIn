@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime
 from .models import Room, Reservation
+from accounts.models import CustomUser
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -32,10 +34,11 @@ def reserve_room(request, room_id):
         check_in = request.POST.get('check_in')
         check_out = request.POST.get('check_out')
         special_request = request.POST.get('special_request')
-
+        user=get_object_or_404(CustomUser,username=email)
         # Save the reservation
         reservation = Reservation(
             room=room,
+            user=user,
             first_name=first_name,
             last_name=last_name,
             email=email,
@@ -53,7 +56,7 @@ def reserve_room(request, room_id):
         total_cost = stay_duration * float(room.room_price)
 
         # Redirect to the payment page with reservation_id and total_cost
-        return redirect('payment_page', reservation_id=reservation.id, total_cost=total_cost)
+        return redirect('sort:payment_page', reservation_id=reservation.id, total_cost=total_cost)
 
     return render(request, 'sortingroom/reserve_room.html', {'room': room})
 
