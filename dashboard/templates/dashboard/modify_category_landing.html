@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Categories</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/css.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Modify Categories</h1>
+    </header>
+
+    <div class="container">
+        <div class="card-container">
+            <a href="{% url 'dashboard:add_category' %}">
+                <h2>Add Category</h2>
+            </a>
+        </div>
+
+        {% for category in categories %}
+        <div class="card-container">
+            <a href="{% url 'dashboard:modify_category' category.id %}">
+                <!-- Display the room photo -->
+                <img src="{{ category.room_photo.url }}" alt="Room Photo" class="room-photo">
+                <h2>{{ category.category_id }}</h2>
+                <p>Edit this category</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

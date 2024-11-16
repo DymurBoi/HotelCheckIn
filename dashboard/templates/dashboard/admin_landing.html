@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Landing</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/css.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome Admin #{{ admin_id }}</h1>
+        <a href="{% url 'admin_logout' %}" class="logout-button">Logout</a>
+    </header>
+
+    <div class="container">
+        <a href="{% url 'dashboard:add_or_modify_room' %}">
+            <div class="card-container">
+                <div class="card">
+                    <br><br>
+                    <h2>Modify/Add Room</h2>
+                    <br><br>
+                    <p>Click here to add or modify room details.</p>
+                    <br><br><br><br>
+                    <button>Room</button>
+                </div>
+            </div>
+        </a>
+
+        <a href="{% url 'dashboard:add_or_modify_category' %}">
+            <div class="card-container">
+                <div class="card">
+                    <br><br>
+                    <h2>Modify/Add Category</h2>
+                    <br><br>
+                    <p>Click here to add or modify categories.</p>
+                    <br><br><br><br>
+                    <button>Category</button>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <h2>Available Rooms</h2>
+    <div class="container">
+        {% for room in rooms_available %}
+            <div class="room-card">
+                <h3>{{ room.room_id }}</h3>
+                <p>Type: {{ room.room_type }}</p>
+                <p>Price: ${{ room.room_price }}</p>
+                <p>Status: Available</p>
+                <a href="{% url 'dashboard:room_detail' room_id=room.id %}">
+                    <button>Modify Room</button>
+                </a>
+            </div>
+        {% empty %}
+            <p>No available rooms at the moment.</p>
+        {% endfor %}
+    </div>
+
+    <h2>Booked Rooms</h2>
+    <div class="container">
+        {% for room in rooms_booked %}
+            <div class="room-card">
+                <h3>{{ room.room_id }}</h3>
+                <p>Type: {{ room.room_type }}</p>
+                <p>Price: ${{ room.room_price }}</p>
+                <p>Status: Booked</p>
+                <p>Booked by: {{ room.booked_by }}</p>
+                <a href="{% url 'dashboard:room_detail' room_id=room.id %}">
+                    <button>Modify Room</button>
+                </a>
+            </div>
+        {% empty %}
+            <p>No booked rooms at the moment.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Room</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/css.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Modify Room</h1>
+    </header>
+    <div class="container">
+     <div class="room-card">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p>hai</p>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

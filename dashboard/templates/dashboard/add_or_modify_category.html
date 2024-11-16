@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add or Modify Category</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/css.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Category Management</h1>
+    </header>
+
+    <div class="container">
+        <div class="card-container">
+            <a href="{% url 'dashboard:add_category' %}">
+                <div class="card">
+                    <br><br>
+                    <h2>Add Category</h2>
+                    <br><br>
+                    <p>Create a new category for items or services.</p>
+                    <br><br> <br><br>
+                    <button>Add Category</button>
+                </div>
+            </a>
+        </div>
+        <div class="card-container">
+            <a href="{% url 'dashboard:modify_category_landing' %}">
+                <div class="card">
+                    <br><br>
+                    <h2>Modify Category</h2>
+                    <br><br>
+                    <p>Update details for existing categories.</p>
+                    <br><br><br><br>
+                    <button>Modify Category</button>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

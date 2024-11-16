@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'updateprofile',
     'accounts',
     'sortingroom',
+    'dashboard',
 ]
 
 MIDDLEWARE = [

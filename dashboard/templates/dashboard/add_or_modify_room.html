@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add or Modify Category</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/css.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Room Management</h1>
+    </header>
+
+    <div class="container">
+        <div class="card-container">
+            <a href="{% url 'dashboard:add_room' %}">
+                <div class="card">
+                    <br><br>
+                    <h2>Add Room</h2>
+                    <br><br>
+                    <p>Create a new Room for items or services.</p>
+                    <br><br><br><br>
+                    <button>Add Room</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="card-container">
+            <a href="{% url 'dashboard:modify_room_landing' %}">
+                <div class="card">
+                    <br><br>
+                    <h2>Modify Room</h2>
+                    <br><br>
+                    <p>Update details for existing Room.</p>
+                    <br><br><br><br><br>
+                    <button>Modify Room</button>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
