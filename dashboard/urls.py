@@ -6,7 +6,7 @@ app_name='dashboard'
 
 urlpatterns = [
     path('', views.welcome, name = 'welcome'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('login/', views.admin_login, name='login'),
     path('admin_landing/', views.admin_landing, name='admin_landing'),
     path('logout/', views.admin_logout, name='admin_logout'),
 
@@ -19,5 +19,5 @@ urlpatterns = [
     path('category/', views.add_or_modify_category, name='add_or_modify_category'),
     path('category/add/', views.add_category, name='add_category'),
     path('category/modify/', views.modify_category_landing, name='modify_category_landing'),
-    path('category/modify/<int:category_id>/', views.modify_category, name='modify_category'),
+    path('category/modify/<int:id>/', views.modify_category, name='modify_category'),
 ]

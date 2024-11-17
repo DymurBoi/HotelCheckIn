@@ -22,6 +22,35 @@ header {
 }
 
 
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+header ul li {
+    text-align: center;
+    display: inline;
+    align-items: center;
+}
+
+header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+header li a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
 a{
     text-decoration: none;
     color: #7C6A46;

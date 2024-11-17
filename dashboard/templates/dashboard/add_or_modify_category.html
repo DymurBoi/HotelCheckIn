@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add or Modify Category</title>
-    <link rel="stylesheet" href="{% static 'dashboard/css/css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
 </head>
 <body>
     <header>
         <h1>Category Management</h1>
+        <ul>
+            <li><a href="{% url 'dashboard:admin_landing' %}">Home</a></li>
+            <li><a href="{% url 'dashboard:add_or_modify_category' %}">Categories</a></li>
+            <li><a href="{% url 'dashboard:add_or_modify_room' %}">Rooms</a></li>
+            <li><a href="{% url 'dashboard:admin_logout' %}">Logout</a></li>
+        </ul>
     </header>
 
     <div class="container">

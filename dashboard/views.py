@@ -5,6 +5,25 @@ from .models import Room, RoomCategory
 from .forms import RoomForm, CategoryForm
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login, logout
+
+def admin_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Authenticate the user
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            if user.is_superuser:  # Ensure the user is an admin
+                login(request, user)
+                messages.success(request, "Login successful!")
+                return redirect('dashboard:admin_landing')
+            else:
+                messages.error(request, "You are not authorized to access this page.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    return render(request, 'registration/login.html')
 
 @login_required
 def admin_landing(request):
@@ -109,7 +128,7 @@ def modify_room_landing(request):
 @login_required
 def add_category(request):
     if request.method == 'POST':
-        form = CategoryForm(request.POST)
+        form = CategoryForm(request.POST, request.FILES)  # Include request.FILES
         if form.is_valid():
             form.save()
             messages.success(request, "Category added successfully.")
@@ -122,10 +141,10 @@ def add_category(request):
     return render(request, 'dashboard/add_category.html', {'form': form})
 
 @login_required
-def modify_category(request, category_id):
-    category = get_object_or_404(RoomCategory, id=category_id)  # Updated from Category to RoomCategory
+def modify_category(request, id):
+    category = get_object_or_404(RoomCategory, id=id)
     if request.method == 'POST':
-        form = CategoryForm(request.POST, instance=category)
+        form = CategoryForm(request.POST, request.FILES, instance=category)  # Include request.FILES
         if form.is_valid():
             form.save()
             messages.success(request, "Category updated successfully.")
@@ -135,7 +154,7 @@ def modify_category(request, category_id):
     else:
         form = CategoryForm(instance=category)
 
-    return render(request, 'dashboard/modify_category.html', {'form': form})
+    return render(request, 'dashboard/modify_category.html', {'form': form , 'category': category})
 
 @login_required
 def modify_category_landing(request):

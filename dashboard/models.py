@@ -2,7 +2,7 @@ from django.db import models
 
 class RoomCategory(models.Model):
     category_id = models.CharField(max_length=100,default="Standard")
-    room_photo = models.ImageField(upload_to='room_photos/', blank=True, null=True)
+    room_photo = models.ImageField( blank=True, null=True,default= "lizard.jpeg")
     room_desc = models.TextField(max_length=200, blank=True)
     room_price = models.DecimalField(max_digits=10, decimal_places=2)
  

@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Landing</title>
-    <link rel="stylesheet" href="{% static 'dashboard/css/css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
 </head>
 <body>
     <header>
         <h1>Welcome Admin #{{ admin_id }}</h1>
-        <a href="{% url 'admin_logout' %}" class="logout-button">Logout</a>
+        <ul>
+            <li><a href="{% url 'dashboard:admin_landing' %}">Home</a></li>
+            <li><a href="{% url 'dashboard:add_or_modify_category' %}">Categories</a></li>
+            <li><a href="{% url 'dashboard:add_or_modify_room' %}">Rooms</a></li>
+            <li><a href="{% url 'dashboard:admin_logout' %}">Logout</a></li>
+        </ul>
     </header>
 
     <div class="container">
@@ -44,15 +49,19 @@
     <h2>Available Rooms</h2>
     <div class="container">
         {% for room in rooms_available %}
-            <div class="room-card">
-                <h3>{{ room.room_id }}</h3>
-                <p>Type: {{ room.room_type }}</p>
-                <p>Price: ${{ room.room_price }}</p>
-                <p>Status: Available</p>
-                <a href="{% url 'dashboard:room_detail' room_id=room.id %}">
-                    <button>Modify Room</button>
-                </a>
-            </div>
+        <div class="card-container">
+            {% if room.room_category.room_photo %}
+            <img src="{{ room.room_category.room_photo.url }}" alt="Room Photo" class="room-photo">
+        {% else %}
+            <img src="{% static 'dashboard/images/default-room.jpg' %}" alt="Default Room Photo" class="room-photo">
+        {% endif %}
+            <h2>{{ room.room_id }}</h2>
+            <p>Price: ${{ room.room_category.room_price }}</p>
+            <p>Available Room: {{ room.is_available }}</p>
+            <a href="{% url 'dashboard:room_detail' room.id %}">
+                <button>Modify Room</button>
+            </a>
+        </div>
         {% empty %}
             <p>No available rooms at the moment.</p>
         {% endfor %}
@@ -61,16 +70,19 @@
     <h2>Booked Rooms</h2>
     <div class="container">
         {% for room in rooms_booked %}
-            <div class="room-card">
-                <h3>{{ room.room_id }}</h3>
-                <p>Type: {{ room.room_type }}</p>
-                <p>Price: ${{ room.room_price }}</p>
-                <p>Status: Booked</p>
-                <p>Booked by: {{ room.booked_by }}</p>
-                <a href="{% url 'dashboard:room_detail' room_id=room.id %}">
-                    <button>Modify Room</button>
-                </a>
-            </div>
+        <div class="card-container">
+            {% if room.room_category.room_photo %}
+            <img src="{{ room.room_category.room_photo.url }}" alt="Room Photo" class="room-photo">
+        {% else %}
+            <img src="{% static 'dashboard/images/default-room.jpg' %}" alt="Default Room Photo" class="room-photo">
+        {% endif %}
+            <h2>{{ room.room_id }}</h2>
+            <p>Price: ${{ room.room_category.room_price }}</p>
+            <p>Available Room: {{ room.is_available }}</p>
+            <a href="{% url 'dashboard:room_detail' room.id %}">
+                <button>Modify Room</button>
+            </a>
+        </div>
         {% empty %}
             <p>No booked rooms at the moment.</p>
         {% endfor %}
