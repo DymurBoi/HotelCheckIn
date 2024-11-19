@@ -18,7 +18,7 @@ class CategoryForm(forms.ModelForm):
         model = RoomCategory
         fields = ['category_id', 'room_photo', 'room_desc', 'room_price']
         labels = {
-            'category_id': 'Category ID',
+            'category_id': 'Category',
             'room_photo': 'Room Photo',
             'room_desc': 'Room Description',
             'room_price': 'Room Price',

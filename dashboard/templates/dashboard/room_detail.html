@@ -19,7 +19,7 @@
     </header>
 
     <div class="room-details">
-        <div class="room-card">
+        <div class="card-container">
             <img src="{{ room.room_photo.url }}" alt="{{ room.room_type }}" class="room-photo">
             <form id="update-room-form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}

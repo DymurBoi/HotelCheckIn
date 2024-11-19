@@ -15,4 +15,4 @@ class Room(models.Model):
     is_available = models.BooleanField(default=True)
  
     def __str__(self):
-        return f"{self.room_id} - ({self.room_category.room_type}) - Available: {self.is_available}"
+        return f"{self.room_id} - ({self.room_category}) - Available: {self.is_available}"
