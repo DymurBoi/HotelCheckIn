@@ -13,7 +13,7 @@
         <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
+                <li><a href="/">HOME</a></li>
                 <li><a href="#explore">EXPLORE</a></li>
                 <li><a href="#rooms">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
@@ -26,13 +26,20 @@
         </div>
     </header>
 
-    <h1>Reserve Room: {{ room.room_type }}</h1>
-    <p>Price: ${{ room.room_price }}</p>
-
     <div class="centerpoint">
         <div class="info_form">
-            <form id="reservationForm" method="POST" action="{% url 'reserve_room' room.id %}">
-                <h2>Enter your details</h2><br>
+            <div class="room-info">
+                <div class="img-container">
+                    <img src="{{ room.room_category.room_photo.url }}" alt="Room Photo">
+                </div>
+                <div class="details">
+                    <h3>Reserved Room: {{ room.room_category.category_id }}</h3>
+                    <p><strong>Price:</strong> P{{ room.room_category.room_price }} per night</p>
+                </div>
+            </div>
+
+            <form id="reservationForm" method="POST" action="{% url 'reserve_room' room.room_category.id %}">
+                <h2>Enter your details</h2>
                 {% csrf_token %}
                 <div class="info two-column">
                     <div>

@@ -1,0 +1,210 @@
+body, html {
+    scroll-behavior: smooth;
+    height: 100%;            
+    margin: 0;                  
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 90px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0px 5px rgb(0, 0, 0);
+    height: 100px;
+}
+
+header img {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+header a {
+    font-size: 15px;
+    padding: 15px;
+    text-decoration: none;
+    color: rgb(6, 6, 6);
+    border-bottom-color: transparent;
+}
+
+header a:hover {
+    color: #72614f;
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+    border-bottom-color: #72614f;
+    transition: all 0.3s ease;
+}
+
+header li {
+    font-size: 15px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px; /* Increased spacing between buttons */
+}
+
+.btn {
+    background-color: #6c543b;
+    color: white;
+    padding: 15px 30px; /* Increased padding for larger buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px; /* Make button text larger */
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #7a5b43;
+}
+
+.book-btn {
+    background-color: #8b724e; /* Different color for 'Book Now' button */
+}
+
+.book-btn:hover {
+    background-color: #7a5b43;
+}
+
+
+.centerpoint {
+    padding: 50px 0px 50px 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.confirmation_box {
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    background-color: #c9c4bd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image_container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+
+.image_container img{
+    height: auto;
+    width: 50px;
+}
+
+.reservation-details p {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px 10px 0px;
+    text-align: justify;
+}
+
+p span {
+    text-align: left;
+    font-weight: 900;
+}
+
+.payment-details{
+    margin-top: 20px;
+}
+
+.payment-details p {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px 10px 0px;
+}
+
+.confirmation_box h1{
+    display: flex;
+    justify-content: center;
+}
+
+div h2{
+    padding-bottom: 10px;
+}
+
+.payment_num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 30% 50px 30%;
+    padding: 5px 0px 5px 0px;
+    background-color: #c6b9a7;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    text-align: center;
+    font-size: 90%;
+}
+
+
+.amount{
+    color: green;
+    font-weight: bold;
+}
+.amount span{
+    color: black;
+}
+
+.thank-you-message {
+    margin: 50px 0 50px 0;
+    text-align: center;
+}
+
+.button-wrapper {
+    display: flex;
+
+}
+
+
+.back-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #8b724e;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.button-wrapper a{
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+

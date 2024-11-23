@@ -1,6 +1,6 @@
 from django.db import models
 
-class RoomCategory(models.Model):
+class RoomCategoryDashboard(models.Model):
     category_id = models.CharField(max_length=100,default="Standard")
     room_photo = models.ImageField( blank=True, null=True,default= "lizard.jpeg")
     room_desc = models.TextField(max_length=200, blank=True)
@@ -10,7 +10,7 @@ class RoomCategory(models.Model):
         return f"{self.category_id} - ${self.room_price}"
  
 class Room(models.Model):
-    room_category = models.ForeignKey(RoomCategory, on_delete=models.CASCADE)
+    room_category = models.ForeignKey(RoomCategoryDashboard, on_delete=models.CASCADE)
     room_id = models.CharField(max_length=50,default=" ")
     is_available = models.BooleanField(default=True)
  

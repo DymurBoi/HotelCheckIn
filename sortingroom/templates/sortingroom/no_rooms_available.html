@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+    <link rel="stylesheet" href="{% static 'sortingroom/no_room_available.css' %}">
+    <script src="{% static 'sortingroom/room_list.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <button class="btn">Login</button>
+            <button class="btn book-btn">Book Now</button>
+        </div>
+    </header>
+
+    <div id="custom-alert" class="custom-alert" style="display: none;">
+        <div class="custom-alert-content">
+            <p>W Hotel says: No rooms are available for this category. Please select a different category.</p>
+            <button id="ok-button">GEGE</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('custom-alert').style.display = 'flex';
+
+
+            document.getElementById('ok-button').addEventListener('click', function () {
+                window.location.href = "{% url 'room_category' %}";
+            });
+        });
+    </script>
+</body>
+</html>

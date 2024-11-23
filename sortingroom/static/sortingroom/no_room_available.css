@@ -1,0 +1,136 @@
+body, html {
+    scroll-behavior: smooth;
+    height: 100%;            
+    margin: 0;                  
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 90px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0px 5px rgb(0, 0, 0);
+    height: 100px;
+}
+
+header img {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+header a {
+    font-size: 15px;
+    padding: 15px;
+    text-decoration: none;
+    color: rgb(6, 6, 6);
+    border-bottom-color: transparent;
+}
+
+header a:hover {
+    color: #72614f;
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+    border-bottom-color: #72614f;
+    transition: all 0.3s ease;
+}
+
+header li {
+    font-size: 15px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px; /* Increased spacing between buttons */
+}
+
+.btn {
+    background-color: #6c543b;
+    color: white;
+    padding: 15px 30px; /* Increased padding for larger buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px; /* Make button text larger */
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #7a5b43;
+}
+
+.book-btn {
+    background-color: #8b724e; /* Different color for 'Book Now' button */
+}
+
+.book-btn:hover {
+    background-color: #7a5b43;
+}
+
+/* Style for custom alert container */
+.custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Style for alert content box */
+.custom-alert-content {
+    background: white;
+    padding: 20px;
+    width: 400px;
+    max-width: 80%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Alert message text */
+.custom-alert-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* OK button styling */
+.custom-alert-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #7a5b43;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-alert-content button:hover {
+    background-color: #c9c4bd;
+
+}

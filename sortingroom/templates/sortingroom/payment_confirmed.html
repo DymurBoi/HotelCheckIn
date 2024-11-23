@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation</title>
+    <link rel="stylesheet" href="{% static 'sortingroom/payment_confirmed.css' %}">
+</head>
+<body>
+    <header>
+        <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="centerpoint">
+        <div class="confirmation_box">
+            <div class="image_container">
+                <img src="{% static 'sortingroom/check_logo.png' %}" alt="Complete">
+            </div>
+            <h1>Payment Complete</h1>
+            <div class="payment_num">
+                <p>Payment #{{ payment.id }}</p>
+            </div>
+
+            <div class="reservation-details">
+                <h2>Reservation Details</h2>
+                <p><span>Name</span> {{ reservation.first_name }} {{ reservation.last_name }}</p><hr>
+                <p><span>Phone</span> {{ reservation.phone }}</p><hr>
+                <p><span>Room Type</span> {{ reservation.room.room_category.room_type }}</p><hr>
+                <p><span>Room Number</span> {{ reservation.room.room_id }}</p><hr>
+                <p><span>Check-in Date</span> {{ reservation.check_in }}</p><hr>
+                <p><span>Check-out Date</span> {{ reservation.check_out }}</p>
+            </div>
+            
+            <div class="payment-details">
+                <h2>Payment Details</h2>
+                <p class="amount"><span>Total Amount</span>P{{ payment.payment_total }}</p><hr>
+                <p><span>Payment Method</span> {{ payment.payment_method }}</p><hr>
+                <p><span>Payment Date</span> {{ payment.payment_date }}</p>
+            </div>
+            
+
+            <div class="thank-you-message">
+                <p>Thank you for your reservation!</p>
+            </div>
+
+            <div class="button-wrapper">
+                <a href="/" class="back-btn">Back To Main</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
