@@ -102,7 +102,7 @@ def reserve_room(request, roomId):
                 'input_data': request.POST
             })
 
-    return render(request, 'reserve_room.html', {'room': available_room})
+    return render(request, 'sortingroom/reserve_room.html', {'room': available_room})
 
 
 def payment_page(request, reservation_id, total_cost):
