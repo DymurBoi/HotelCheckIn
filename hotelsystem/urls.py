@@ -20,10 +20,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('admin1/', admin.site.urls),
+    path('sort/', include('sortingroom.urls')),
     path('admin/',include('dashboard.urls')),
     path('profile/', include('updateprofile.urls')), 
     path('account/', include('accounts.urls')),
-    path('sort/', include('sortingroom.urls')),
     path('', include(('accounts.urls', 'account'), namespace='account')),
 ]
 

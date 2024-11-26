@@ -6,6 +6,7 @@ from django.utils.timezone import now
 from .models import Reservation, Payment
 from dashboard.models import RoomCategory, Room
 
+
 # Create your views here.
 
 def room_category(request):
@@ -101,9 +102,7 @@ def reserve_room(request, roomId):
                 'input_data': request.POST
             })
 
-    return render(request, 'sortingroom/reserve_room.html', {'room': available_room})
-
-
+    return render(request, 'reserve_room.html', {'room': available_room})
 
 
 def payment_page(request, reservation_id, total_cost):

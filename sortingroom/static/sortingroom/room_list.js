@@ -26,7 +26,7 @@ function closeDialog() {
 function goToReserve(roomId) {
     if (roomId) {
         console.log("Redirecting with roomId:", roomId);
-        window.location.href = `sort/reserve_room/${roomId}/`;
+        window.location.href = '/sort/reserve_room/${roomId}/';
     } else {
         console.error("Category ID is missing. Cannot redirect.");
     }
