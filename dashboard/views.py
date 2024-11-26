@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Room, RoomCategoryDashboard
+from .models import Room, RoomCategory
 from .forms import RoomForm, CategoryForm
 from django.contrib import messages
 from django.contrib.auth import logout
@@ -65,7 +65,7 @@ def room_detail(request, room_id):
 
 @login_required
 def add_room(request):
-    categories = RoomCategoryDashboard.objects.all()  # Updated from Category to RoomCategory
+    categories = RoomCategory.objects.all()  # Updated from Category to RoomCategory
 
     if request.method == 'POST':
         form = RoomForm(request.POST)
@@ -102,7 +102,7 @@ def add_or_modify_room(request, room_id=None):
 
 @login_required
 def add_or_modify_category(request, category_id=None):
-    category = get_object_or_404(RoomCategoryDashboard, id=category_id) if category_id else None  # Updated Category to RoomCategory
+    category = get_object_or_404(RoomCategory, id=category_id) if category_id else None  # Updated Category to RoomCategory
 
     if request.method == 'POST':
         form = CategoryForm(request.POST, instance=category)
@@ -142,7 +142,7 @@ def add_category(request):
 
 @login_required
 def modify_category(request, id):
-    category = get_object_or_404(RoomCategoryDashboard, id=id)
+    category = get_object_or_404(RoomCategory, id=id)
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES, instance=category)  # Include request.FILES
         if form.is_valid():
@@ -158,7 +158,7 @@ def modify_category(request, id):
 
 @login_required
 def modify_category_landing(request):
-    categories = RoomCategoryDashboard.objects.all()  # Updated from Category to RoomCategory
+    categories = RoomCategory.objects.all()  # Updated from Category to RoomCategory
     return render(request, 'dashboard/modify_category_landing.html', {'categories': categories})
 
 def admin_logout(request):

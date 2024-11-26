@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime, timezone
 from django.utils import timezone
 from django.utils.timezone import now
-from .models import Room, Reservation,RoomCategory, Payment
+from .models import Reservation, Payment
+from dashboard.models import RoomCategory, Room
 
 # Create your views here.
 
@@ -83,7 +84,7 @@ def reserve_room(request, roomId):
             payment.save()
 
             # Redirect to payment page
-            return redirect('payment_page', reservation_id=reservation.id, total_cost=total_cost)
+            return redirect('sortingroom:payment_page', reservation_id=reservation.id, total_cost=total_cost)
 
         except ValidationError as e:
             # Handle validation errors
@@ -101,6 +102,7 @@ def reserve_room(request, roomId):
             })
 
     return render(request, 'sortingroom/reserve_room.html', {'room': available_room})
+
 
 
 

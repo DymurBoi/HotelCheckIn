@@ -30,15 +30,15 @@
         <div class="info_form">
             <div class="room-info">
                 <div class="img-container">
-                    <img src="{{ room.room_category.room_photo.url }}" alt="Room Photo">
+                    <img src="{{ room.room_category.room_photo.url | default:'sortingroom/static/wifi.png' }}" alt="Room Photo">
                 </div>
                 <div class="details">
                     <h3>Reserved Room: {{ room.room_category.category_id }}</h3>
                     <p><strong>Price:</strong> P{{ room.room_category.room_price }} per night</p>
                 </div>
             </div>
-
-            <form id="reservationForm" method="POST" action="{% url 'reserve_room' room.room_category.id %}">
+            
+            <form id="reservationForm" method="POST" action="{% url 'sortingroom:reserve_room' room.room_category.id %}">
                 <h2>Enter your details</h2>
                 {% csrf_token %}
                 <div class="info two-column">

@@ -15,7 +15,7 @@ urlpatterns = [
     path('room/modify/', views.modify_room_landing, name='modify_room_landing'),
     path('room/modify/<int:room_id>/', views.room_detail, name='room_detail'),
     #path('modify_room/<int:room_id>/', views.modify_room, name='modify_room'),
-
+    
     path('category/', views.add_or_modify_category, name='add_or_modify_category'),
     path('category/add/', views.add_category, name='add_category'),
     path('category/modify/', views.modify_category_landing, name='modify_category_landing'),

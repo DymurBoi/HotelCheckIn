@@ -57,7 +57,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ room.category_id }}</h5>
                             <p class="card-text">P{{ room.room_price }}</p>
-                            <p class="card-text">Rooms Available: { room.rooms_available === 0? "No Available" || room.rooms_available }</p>
+                            <p class="card-text">Rooms Available: {{ room.rooms_available }}</p>
                             <hr>
                             <div class="card-inclusion">
                                 <h4>Inclusions:</h4>

@@ -1,9 +1,9 @@
 from django import forms
-from .models import Room, RoomCategoryDashboard
+from .models import Room, RoomCategory
 
 class RoomForm(forms.ModelForm):
     room_category = forms.ModelChoiceField(
-        queryset=RoomCategoryDashboard.objects.all(),
+        queryset=RoomCategory.objects.all(),
         empty_label="Select Room Category",
         label="Room Category",
     )
@@ -15,7 +15,7 @@ class RoomForm(forms.ModelForm):
 
 class CategoryForm(forms.ModelForm):
     class Meta:
-        model = RoomCategoryDashboard
+        model = RoomCategory
         fields = ['category_id', 'room_photo', 'room_desc', 'room_price']
         labels = {
             'category_id': 'Category',
