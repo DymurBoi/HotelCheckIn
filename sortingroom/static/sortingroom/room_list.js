@@ -8,9 +8,8 @@ function openDialog(roomId, catId, roomPhoto, roomPrice, roomDesc) {
     document.getElementById('dialog-room-price').innerText = `P${roomPrice}/night`;
     document.getElementById('dialog-room-desc').innerText = roomDesc;
 
-
     const reserveButton = dialog.querySelector('button[onclick^="goToReserve"]');
-    reserveButton.setAttribute('onclick', `goToReserve('${roomId}')`);
+    reserveButton.setAttribute('onclick', goToReserve('${roomId}'));
 
     centerpoint.style.display = 'flex';
     dialog.showModal();

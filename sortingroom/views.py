@@ -122,7 +122,7 @@ def payment_page(request, reservation_id, total_cost):
         payment.save()
 
         # Redirect to the payment confirmed page
-        return redirect('payment_confirmed', payment_id=payment.id)
+        return redirect('sortingroom:payment_confirmed', payment_id=payment.id)
 
     return render(request, 'sortingroom/payment.html', {
         'reservation': reservation,
