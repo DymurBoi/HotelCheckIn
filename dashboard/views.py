@@ -6,6 +6,7 @@ from .forms import RoomForm, CategoryForm
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login, logout
+from sortingroom.models import Reservation
 
 def admin_login(request):
     if request.method == 'POST':
@@ -36,11 +37,14 @@ def admin_landing(request):
     # Query for booked rooms
     rooms_booked = Room.objects.filter(is_available=False)
 
+    reservation = Reservation.objects.all()
+
     context = {
         'admin_id': admin_id,
         'username': username,
         'rooms_available': rooms_available,
-        'rooms_booked': rooms_booked,  # Add booked rooms to the context
+        'rooms_booked': rooms_booked,  
+        'reservation': reservation,
     }
 
     return render(request, 'dashboard/admin_landing.html', context)
