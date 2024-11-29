@@ -13,7 +13,19 @@ class ProfilePicForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['firstname','lastname', 'username','address','phone_number','password', 'profile_pic']
+        fields = ['firstname','lastname', 'username','address','phone_number', 'profile_pic']
+        labels={
+            'firstname':'First Name',
+            'lastname':'Last Name', 
+            'username':'Email',
+            'address':'Address',
+            'phone_number':'Phone Number', 
+            'profile_pic':'Profile Picture'
+        }
         widgets = {
-            'profile_pic': forms.ClearableFileInput(attrs={'style': 'display: none;'}),
+                'profile_pic': forms.ClearableFileInput(attrs={
+                'initial_text': '',
+                'input_text': '',
+                'clear_checkbox_label': '',
+            }),
         }

@@ -46,8 +46,9 @@ header li {
 }
 
 .header-buttons {
-    display: flex;
-    gap: 15px; /* Increased spacing between buttons */
+    display: flex;        /* Use flexbox layout */
+    align-items: center; /* Center items vertically */
+    gap: 15px;  
 }
 .btn {
     background-color: #6c543b;
@@ -227,6 +228,65 @@ label {
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-input[type="file"] + a, input[type="file"] + span {
-    display: none;  /* Hide the current file name */
+form label{
+    font-size: medium;
+    margin-right: 50px;
+}
+form p{
+    font-size: medium;
+    margin-right: 10px;
+}
+form input{
+    font-size: medium;
+    margin-right: 10px;
+}
+form .header-buttons{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Centered login form */
+.login-form {
+    background-color: rgba(255, 255, 255, 0.75); /* 75% opacity */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 420px; 
+    text-align: center;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#profile_pic-clear_id,
+label[for="profile_pic-clear_id"] {
+    display: none;
+}
+form p a {
+    display: inline-block;
+    max-width: 100%; /* Ensure it doesn't go past container width */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    white-space: nowrap; /* Prevent line breaks */
 }

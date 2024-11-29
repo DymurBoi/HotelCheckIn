@@ -70,8 +70,9 @@ header li {
 .book-btn:hover {
     background-color: #7a5b43;
 }
-
-
+a{
+    text-decoration: none;
+}
 
 /* Centering the login container */
 body .login-container {
