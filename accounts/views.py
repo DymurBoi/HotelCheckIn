@@ -21,12 +21,18 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            
+
+            # Debugging statements
+            print("Username:", username)  # Prints the username entered
+            print("Password Attempt:", password)  # Prints the password entered
+
             # Authenticate user
             user = authenticate(request, username=username, password=password)
+
             if user is not None:
                 login(request, user)
-                return redirect('success')  # Redirect to success page
+                user_id = user.id  # Get the user ID for redirection
+                return redirect('profile:home', user_id=user_id)  # Redirect to the profile home with user_id
             else:
                 form.add_error(None, 'Invalid username or password')
     else:
