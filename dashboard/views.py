@@ -31,13 +31,18 @@ def admin_landing(request):
     admin_id = request.user.id
     username = request.user.username
 
-    # Query for available rooms
-    rooms_available = Room.objects.filter(is_available=True)
+    booked_room_ids = Room.objects.filter(is_available=False).values_list('id', flat=True)
+    # Get all reserved room IDs from reservations
+    reserved_room_ids = Reservation.objects.values_list('room_id', flat=True)
+
+    # Exclude rooms that are reserved
+    rooms_available = Room.objects.filter(is_available=True).exclude(id__in=reserved_room_ids)
 
     # Query for booked rooms
     rooms_booked = Room.objects.filter(is_available=False)
 
-    reservation = Reservation.objects.all()
+    # Fetch all reservations for display
+    reservation = Reservation.objects.exclude(room_id__in=booked_room_ids)
 
     context = {
         'admin_id': admin_id,
