@@ -32,7 +32,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 user_id = user.id  # Get the user ID for redirection
-                return redirect('profile:home', user_id=user_id)  # Redirect to the profile home with user_id
+                return redirect('profile:home', user_id)  # Redirect to the profile home with user_id
             else:
                 form.add_error(None, 'Invalid username or password')
     else:
