@@ -3,14 +3,16 @@ function openDialog(roomId, catId, roomPhoto, roomPrice, roomDesc) {
     const dialog = document.getElementById('room_selection-dialog');
     const centerpoint = document.querySelector('.centerpoint');
     
+    // Update dialog content
     document.getElementById('dialog-category-id').innerText = `${catId} Room`;
     document.getElementById('dialog-room-photo').src = roomPhoto;
     document.getElementById('dialog-room-price').innerText = `P${roomPrice}/night`;
     document.getElementById('dialog-room-desc').innerText = roomDesc;
+    // Update the "Reserve" button to use the correct roomId
+    const reserveButton = dialog.querySelector('#reserve-button');
+    reserveButton.onclick = () => goToReserve(roomId); // Directly assign function
 
-    const reserveButton = dialog.querySelector('button[onclick^="goToReserve"]');
-    reserveButton.setAttribute('onclick', goToReserve('${roomId}'));
-
+    // Show the dialog
     centerpoint.style.display = 'flex';
     dialog.showModal();
 }
@@ -26,7 +28,7 @@ function closeDialog() {
 function goToReserve(roomId) {
     if (roomId) {
         console.log("Redirecting with roomId:", roomId);
-        window.location.href = 'reserve_room/${roomId}/';
+        window.location.href = `reserve_room/${roomId}/`;
     } else {
         console.error("Category ID is missing. Cannot redirect.");
     }
