@@ -1,15 +1,20 @@
 from django.forms import ValidationError
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from datetime import datetime, timezone
 from django.utils import timezone
 from django.utils.timezone import now
 from .models import Reservation, Payment
 from dashboard.models import RoomCategory, Room
+from accounts.models import CustomUser
 
 
 # Create your views here.
 
+@login_required
 def room_category(request):
+    users = request.user  # Get the currently logged-in user
     sort_by = request.GET.get('sort_by', 'category_id')
 
     if sort_by == 'rooms_available':
@@ -24,15 +29,19 @@ def room_category(request):
             sort_by = 'category_id'
         room_category = RoomCategory.objects.all().order_by(sort_by)
 
-    return render(request, 'sortingroom/room_list.html', {'room_category': room_category})
+    return render(request, 'sortingroom/room_list.html', {
+        'room_category': room_category,
+        'users': users
+    })
 
-
+@login_required
 def reserve_room(request, roomId):
+    users = request.user
     room_category = get_object_or_404(RoomCategory, id=roomId)
     available_room = Room.objects.filter(room_category=room_category, is_available=True).first()
 
     if not available_room:
-        return render(request, 'sortingroom/no_rooms_available.html')
+        return render(request, 'sortingroom/no_rooms_available.html', {'users': users})
 
     if request.method == 'POST':
         # Extract data from the form
@@ -102,9 +111,9 @@ def reserve_room(request, roomId):
                 'input_data': request.POST
             })
 
-    return render(request, 'sortingroom/reserve_room.html', {'room': available_room})
+    return render(request, 'sortingroom/reserve_room.html', {'room': available_room, 'users': request.user})
 
-
+@login_required
 def payment_page(request, reservation_id, total_cost):
     reservation = get_object_or_404(Reservation, id=reservation_id)
     formatted_total_cost = f"{float(total_cost):.2f}"
@@ -129,6 +138,7 @@ def payment_page(request, reservation_id, total_cost):
         'total_cost': formatted_total_cost,
     })
 
+@login_required
 def payment_confirmed(request, payment_id):
     payment = get_object_or_404(Payment, id=payment_id)
     reservation = payment.reservation

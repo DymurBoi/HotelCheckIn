@@ -39,13 +39,15 @@ header a {
     border-bottom-color: transparent;
 }
 
-header a:hover {
+ul a:hover {
     color: #72614f;
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
     border-bottom-color: #72614f;
     transition: all 0.3s ease;
 }
+
+
 
 header li {
     font-size: 15px;
@@ -69,6 +71,41 @@ header li {
     font-weight: bold;
     font-size: 16px; /* Make button text larger */
     transition: background-color 0.3s;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.profile-container a:hover {
+    color: #6c543b;
+    transition: all 0.3s ease;
+}
+
+.img-pfp {
+    clip-path: circle();
+    display: block;
+    width: 100px; /* Adjust the size to a more reasonable value */
+    max-width: 100px;
+    height: 100px;
+    max-height: 100px;
+}
+.header-pfp {
+    clip-path: circle();
+    display: block;
+    width: 50px; /* Adjust the size to a more reasonable value */
+    max-width: 50px;
+    margin-right: 10px;
 }
 
 .btn:hover {

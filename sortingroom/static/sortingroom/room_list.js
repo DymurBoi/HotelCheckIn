@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 function updatePaymentMessage(total_cost) {
     const paymentMethod = document.getElementById('payment-method').value;
     const totalAmount = total_cost; // Update this with the actual total amount dynamically if needed

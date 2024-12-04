@@ -87,6 +87,36 @@ header li {
     background-color: #7a5b43;
 }
 
+.user-profile {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.img-pfp {
+    clip-path: circle();
+    display: block;
+    width: 100px; /* Adjust the size to a more reasonable value */
+    max-width: 100px;
+    height: 100px;
+    max-height: 100px;
+}
+.header-pfp {
+    clip-path: circle();
+    display: block;
+    width: 50px; /* Adjust the size to a more reasonable value */
+    max-width: 50px;
+    margin-right: 10px;
+}
+
 /* Style for custom alert container */
 .custom-alert {
     position: fixed;
