@@ -13,7 +13,7 @@
         <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="/">HOME</a></li>
+                <li><a href="{% url 'profile:home' users.pk %}">HOME</a></li>
                 <li><a href="#explore">EXPLORE</a></li>
                 <li><a href="#rooms">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>

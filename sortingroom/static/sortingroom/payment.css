@@ -172,6 +172,10 @@ select {
     box-sizing: border-box;
 }
 
+select option {
+    font-size: 15px; /* Indirectly increases the height */
+}
+
 .button-wrapper {
     align-items: flex-end;
 }
