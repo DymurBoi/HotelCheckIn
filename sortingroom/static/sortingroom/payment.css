@@ -11,8 +11,6 @@ body, html {
     scroll-behavior: smooth;
 }
 
-
-
 header {
     display: flex;
     justify-content: space-between;
@@ -43,11 +41,16 @@ header a {
     border-bottom-color: transparent;
 }
 
-header a:hover {
+ul a:hover {
     color: #72614f;
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
     border-bottom-color: #72614f;
+    transition: all 0.3s ease;
+}
+
+.profile-container a:hover {
+    color: #6c543b;
     transition: all 0.3s ease;
 }
 
@@ -75,27 +78,45 @@ header li {
     transition: background-color 0.3s;
 }
 
-.btn:hover {
-    background-color: #7a5b43;
+.user-profile {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
 }
 
-.book-btn {
-    background-color: #8b724e; /* Different color for 'Book Now' button */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
 }
 
-.book-btn:hover {
-    background-color: #7a5b43;
+.img-pfp {
+    clip-path: circle();
+    display: block;
+    width: 100px; /* Adjust the size to a more reasonable value */
+    max-width: 100px;
+    height: 100px;
+    max-height: 100px;
+}
+
+.header-pfp {
+    clip-path: circle();
+    display: block;
+    width: 50px; /* Adjust the size to a more reasonable value */
+    max-width: 50px;
+    margin-right: 10px;
 }
 
 
 .centerpoint {
     display: flex;
     justify-content: center;
-    padding: 50px;
     width: 100%;
 }
 
 .payment_form {
+    margin-top: 50px;
     width: 100%;
     max-width: 600px;
     padding: 40px;

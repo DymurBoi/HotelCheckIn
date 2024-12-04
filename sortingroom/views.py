@@ -111,10 +111,11 @@ def reserve_room(request, roomId):
                 'input_data': request.POST
             })
 
-    return render(request, 'sortingroom/reserve_room.html', {'room': available_room, 'users': request.user})
+    return render(request, 'sortingroom/reserve_room.html', {'room': available_room, 'users': users})
 
 @login_required
 def payment_page(request, reservation_id, total_cost):
+    users = request.user
     reservation = get_object_or_404(Reservation, id=reservation_id)
     formatted_total_cost = f"{float(total_cost):.2f}"
 
@@ -134,16 +135,19 @@ def payment_page(request, reservation_id, total_cost):
         return redirect('sortingroom:payment_confirmed', payment_id=payment.id)
 
     return render(request, 'sortingroom/payment.html', {
+        'users': users,
         'reservation': reservation,
         'total_cost': formatted_total_cost,
     })
 
 @login_required
 def payment_confirmed(request, payment_id):
+    users = request.user
     payment = get_object_or_404(Payment, id=payment_id)
     reservation = payment.reservation
 
     return render(request, 'sortingroom/payment_confirmed.html', {
+        'users': users,
         'reservation': reservation,
         'payment': payment,
     })

@@ -13,24 +13,21 @@
         <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
+                <li><a href="{% url 'profile:home' users.pk %}">HOME</a></li>
                 <li><a href="#explore">EXPLORE</a></li>
                 <li><a href="#rooms">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
-        <div class="header-buttons">
-            <button class="btn">Login</button>
-            <button class="btn book-btn">Book Now</button>
-        </div>
+            <div class = "profile-container">
+                <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile">
+                    <img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" />
+                    <strong>{{users.firstname}} {{users.lastname}}</strong>
+                </a>
+            </div>
     </header>
 
-    <!--
-    <h1>Reserve Room: {{ reservation.room.room_type }}</h1>
-    <p>Price: ${{ reservation.room.room_price }} per night</p>
-    <p>Total Amount: ${{ total_cost }}</p>
-    -->
 
     <div class="centerpoint">
         <div class="payment_form">

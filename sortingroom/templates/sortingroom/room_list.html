@@ -20,10 +20,8 @@
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
-        <div class="header-buttons">
-            <div class = "profile-container">
-                <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.firstname}} {{users.lastname}}</strong></a>
-            </div>
+        <div class = "profile-container">
+            <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.firstname}} {{users.lastname}}</strong></a>
         </div>
     </header>
 
