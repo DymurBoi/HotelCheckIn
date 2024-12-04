@@ -1,6 +1,11 @@
-# HotelCheckIn
+# 🏨 Project Title: Hotel Checkin In System
 Information Management 2 Project. Hotel Check In system
-
+---
+## Group Members:
+- Joshua Jamisola
+- Dymur Dame Maquiling
+- Redgel Gregory Mefania
+<img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
 ## FUNCTIONAL REQUIREMENTS:
 + User Registration and Authentication
 + Profile Management
