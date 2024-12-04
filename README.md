@@ -5,7 +5,7 @@ Information Management 2 Project. Hotel Check In system
 - Joshua Jamisola
 - Dymur Dame Maquiling
 - Redgel Gregory Mefania
-<img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
+<img src="https://ibb.co/XF9g5Fs" alt="contrib.rocks image" />
 ## FUNCTIONAL REQUIREMENTS:
 + User Registration and Authentication
 + Profile Management
