@@ -129,8 +129,7 @@ header li {
     width: 100%;
     height: 600px;
     object-fit: cover;
-    filter: sepia(60%) brightness(90%) contrast(90%);
-    
+    filter: sepia(60%) brightness(50%) contrast(90%);
 }
 
 .container_mt-5{
@@ -148,9 +147,11 @@ header li {
     text-align: center;
 }
 
-.arrow-image {
+.centered-text img{
     margin-top: 50px;
+    filter: brightness(100%) contrast(100%);
     transition: transform 0.3s;
+
 }
 
 .arrow-image:hover {
@@ -325,14 +326,14 @@ dialog img{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 4rem 0rem 4rem 3rem;
+    margin: 4rem 1rem 4rem 4rem;
 }
 
 .dialog-inclusion{
     color: #7a5b43;
     padding-bottom: 1em;
     padding-top: 1em;
-    padding-right: 4em;
+    padding-right: 1em;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -380,12 +381,18 @@ dialog img{
 }
 
 #close-button {
-    margin: 1rem 1rem 4rem 1rem;
+    margin: 10px 10px 10px 10px;
     height: 6%;
-    width: 15%;
+    width: 30px;
     padding: 0px;
     border: none;
     background: none;
+
+}
+
+#close-button img{
+    width: 30px;
+    height: 30px;
 }
 
 footer {
