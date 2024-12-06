@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import UserProfile
 from .forms import UserForm,ProfilePicForm
 from accounts.models import CustomUser
+
 def sample_home(request,pk):
     users = users = get_object_or_404(CustomUser, pk=pk) 
     return render(request, 'home.html', {'users': users})
