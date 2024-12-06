@@ -38,7 +38,7 @@ operational efficiency.
 ---
 
 ## ✨Functional Requirements:
-### 🧑‍💻User Registration and Authentication
+### 🧑‍💻User Registration
 + Able to create an account which is required to be able to access the features of the app
 
 ### 👤 Profile Management
