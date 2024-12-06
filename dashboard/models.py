@@ -21,3 +21,4 @@ class Room(models.Model):
 
     def __str__(self):
         return f"{self.room_id} - ({self.room_category.category_id}) - Available: {self.is_available}"
+
