@@ -12,11 +12,11 @@ from accounts.models import CustomUser
 
 # Create your views here.
 
-@login_required
-def room_category(request):
-    users = request.user  # Get the currently logged-in user
+def room_category(request,pk):
+    # Get the currently logged-in user
     sort_by = request.GET.get('sort_by', 'category_id')
-
+    
+    users = users = get_object_or_404(CustomUser, pk=pk) 
     if sort_by == 'rooms_available':
         room_category = sorted(
             RoomCategory.objects.all(),
@@ -34,7 +34,6 @@ def room_category(request):
         'users': users
     })
 
-@login_required
 def reserve_room(request, roomId):
     users = request.user
     room_category = get_object_or_404(RoomCategory, id=roomId)
@@ -113,7 +112,6 @@ def reserve_room(request, roomId):
 
     return render(request, 'sortingroom/reserve_room.html', {'room': available_room, 'users': users})
 
-@login_required
 def payment_page(request, reservation_id, total_cost):
     users = request.user
     reservation = get_object_or_404(Reservation, id=reservation_id)
@@ -140,7 +138,6 @@ def payment_page(request, reservation_id, total_cost):
         'total_cost': formatted_total_cost,
     })
 
-@login_required
 def payment_confirmed(request, payment_id):
     users = request.user
     payment = get_object_or_404(Payment, id=payment_id)

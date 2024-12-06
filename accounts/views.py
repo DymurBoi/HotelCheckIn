@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm, CustomUserLoginForm
 from .models import CustomUser
@@ -31,7 +31,7 @@ def login_view(request):
                 if user.check_password(password):  # Use check_password method
                     login(request, user)
                     user_id=user.id
-                    return redirect('profile:home',user_id)  # Redirect to the homepage
+                    return redirect('sortingroom:room_category',user_id)  # Redirect to the homepage
                 else:
                     form.add_error(None, 'Invalid username or password')
             except CustomUser.DoesNotExist:

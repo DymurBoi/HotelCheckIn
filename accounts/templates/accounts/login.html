@@ -10,11 +10,18 @@
 <div class="login-container">
     <div class="login-form">
         <h2>Login</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit">Login</button>
-        </form>
+        <div>
+            <form method="POST" >
+                {% csrf_token %}
+                <br>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Sign In</button>
+                {% if messages %}
+                    <p style="color: red;">{% for message in messages %}{{ message }}{% endfor %}</p>
+                {% endif %}
+            </form>
+        </div>
 
        <p>Don't have an account? <a href="{% url 'account:signup' %}">Sign up</a></p>  
     </div>
