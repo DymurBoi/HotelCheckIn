@@ -25,15 +25,16 @@ def login_view(request):
             # Debugging statements
             print("Username:", username)  # Prints the username entered
             print("Password Attempt:", password)  # Prints the password entered
-
-            # Authenticate user
-            user = authenticate(request, username=username, password=password)
-
-            if user is not None:
-                login(request, user)
-                user_id = user.id  # Get the user ID for redirection
-                return redirect('profile:home', user_id)  # Redirect to the profile home with user_id
-            else:
+            
+            try:
+                user = CustomUser.objects.get(username=username)
+                if user.check_password(password):  # Use check_password method
+                    login(request, user)
+                    user_id=user.id
+                    return redirect('profile:home',user_id)  # Redirect to the homepage
+                else:
+                    form.add_error(None, 'Invalid username or password')
+            except CustomUser.DoesNotExist:
                 form.add_error(None, 'Invalid username or password')
     else:
         form = CustomUserLoginForm()
