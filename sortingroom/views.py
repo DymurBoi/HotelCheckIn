@@ -34,7 +34,8 @@ def room_category(request):
     })
 
 def reserve_room(request, roomId):
-    users = request.user
+    pk=request.session.get('pk')
+    users = users = get_object_or_404(CustomUser, pk=pk) 
     room_category = get_object_or_404(RoomCategory, id=roomId)
     available_room = Room.objects.filter(room_category=room_category, is_available=True).first()
 
