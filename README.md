@@ -1,5 +1,4 @@
-# 🏨 Project Title: Hotel Checkin In System</a>
-Information Management 2 Project. Hotel Check In system
+# 🏨 Project Title: Hotel Checkin In System
 ---
 ## Group Members:
 - Joshua Jamisola
