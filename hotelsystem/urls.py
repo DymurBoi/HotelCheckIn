@@ -20,12 +20,12 @@ from django.conf.urls.static import static
 from django.conf import settings 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('rooms/', include('sortingroom.urls')),
-    path('admin-dashboard/', include('dashboard.urls')),
-    path('profile/', include('updateprofile.urls')),
-    path('account/', include('accounts.urls')),  # Only include once
-    path('', include(('accounts.urls', 'account'), namespace='account')),  # Remove the line above if using this
+   path('admin/', admin.site.urls),  # Admin Dashboard
+    path('account/', include('accounts.urls', namespace='account')),  # User Accounts (Signup, Login, etc.)
+    path('dashboard/', include('dashboard.urls')),  # Admin Dashboard for managing the system
+    path('rooms/<int:pk>', include('sortingroom.urls', namespace='sortingroom')),  # Room Management
+    path('profile/', include('updateprofile.urls', namespace='profile')),  # User Profile Management
+    path('', include('accounts.urls')),  # Default Home (from accounts)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
