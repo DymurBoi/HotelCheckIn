@@ -14,12 +14,14 @@ def user_list(request,pk):
     return render(request, 'user_profile.html', {'users': users})
 
 def update_user(request, pk):
-    users = get_object_or_404(CustomUser, pk=pk) 
+    users = get_object_or_404(CustomUser, pk=pk)
     if request.method == 'POST':
-        form = UserForm(request.POST,request.FILES or None, instance=users)
-        if form.is_valid(): 
+        # Pass both POST data and FILES (corrected to request.FILES)
+        form = UserForm(request.POST, request.FILES, instance=users)
+        if form.is_valid():
             form.save()
-            return redirect('profile:user_profile',pk=users.pk)  
+            return redirect('profile:user_profile', pk=users.pk)
     else:
-        form = UserForm(instance=users)  
+        form = UserForm(instance=users)
+
     return render(request, 'update_profile.html', {'users': users, 'form': form})

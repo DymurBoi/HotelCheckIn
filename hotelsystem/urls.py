@@ -23,7 +23,7 @@ urlpatterns = [
    path('admin/', admin.site.urls),  # Admin Dashboard
     path('account/', include('accounts.urls', namespace='account')),  # User Accounts (Signup, Login, etc.)
     path('dashboard/', include('dashboard.urls')),  # Admin Dashboard for managing the system
-    path('rooms/<int:pk>', include('sortingroom.urls', namespace='sortingroom')),  # Room Management
+    path('rooms/', include('sortingroom.urls', namespace='sortingroom')),  # Room Management
     path('profile/', include('updateprofile.urls', namespace='profile')),  # User Profile Management
     path('', include('accounts.urls')),  # Default Home (from accounts)
 ]

@@ -23,48 +23,52 @@
             <button class="btn book-btn">Book Now</button>
         </div>
     </header>
-    <div class="centered-text-profile">
-    <h1>Update Profile</h1>
-    <form method="POST" class="form-update" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="profile-container">
-            <div class="profile-header">
-                <img src="{{ users.profile_pic.url }}" alt="User profile picture" class="profile-pic">
-                {{ form.profile_pic }}
-                
-            </div>
-        <div class="info-container">
-            <div class="info-group">
-                <label for="id_email">First Name</label>
-                {{ form.firstname }}
-                <span class="edit-icon">✎</span>
-            </div>
-            <div class="info-container">
-                <div class="info-group">
-                    <label for="id_email">Last Name</label>
-                    {{ form.lastname }}
-                    <span class="edit-icon">✎</span>
-                </div>
-        <div class="info-container">
-            <div class="info-group">
-                <label for="id_email">Email</label>
-                {{ form.username }}
-                <span class="edit-icon">✎</span>
-            </div>
-        <div class="info-container">
-            <div class="info-group">
-                <label for="id_email">Address</label>
-                {{ form.address }}
-                <span class="edit-icon">✎</span>
-            </div>
-        <div class="header-buttons">
-            <button class="btn apply-btn" type="submit">Save</button>
-            <a class="btn apply-btn" href="{% url 'profile:user_profile' users.pk %}">
-                <button class="btn-a">Back to Profile</button>
-            </a>            
-         </div>
-    </form>
     
-    <div/>
+    <div class="centered-text-profile">
+        <h1>Update Profile</h1>
+        <form method="POST" class="form-update" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="profile-container">
+                <div class="profile-header">
+                    <img src="{{ users.profile_pic.url }}" alt="User profile picture" class="profile-pic">
+                    {{ form.profile_pic }}
+                </div>
+
+                <div class="info-container">
+                    <div class="info-group">
+                        <label for="id_firstname">First Name</label>
+                        {{ form.firstname }}
+                        <span class="edit-icon">✎</span>
+                    </div>
+
+                    <div class="info-group">
+                        <label for="id_lastname">Last Name</label>
+                        {{ form.lastname }}
+                        <span class="edit-icon">✎</span>
+                    </div>
+
+                    <div class="info-group">
+                        <label for="id_username">Email</label>
+                        {{ form.username }}
+                        <span class="edit-icon">✎</span>
+                    </div>
+
+                    <div class="info-group">
+                        <label for="id_address">Address</label>
+                        {{ form.address }}
+                        <span class="edit-icon">✎</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-buttons">
+                <button class="btn apply-btn" type="submit">Save</button>
+            </div>
+        </form>
+
+        <div class="header-buttons">
+            <a href="{% url 'profile:user_profile' users.pk %}" class="btn apply-btn">Back to Profile</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,6 +1,5 @@
 from django.forms import ValidationError
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timezone
 from django.utils import timezone
@@ -12,10 +11,10 @@ from accounts.models import CustomUser
 
 # Create your views here.
 
-def room_category(request,pk):
+def room_category(request):
     # Get the currently logged-in user
     sort_by = request.GET.get('sort_by', 'category_id')
-    
+    pk=request.session.get('pk')
     users = users = get_object_or_404(CustomUser, pk=pk) 
     if sort_by == 'rooms_available':
         room_category = sorted(

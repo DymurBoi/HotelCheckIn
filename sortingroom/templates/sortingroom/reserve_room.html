@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Reservation</title>
-    <link rel="stylesheet" href="{% static 'sortingroom/reserve_room.css' %}">
+    <title>Rooms</title>
+    <link rel="stylesheet" href="{% static 'sortingroom/room_list.css' %}">
     <script src="{% static 'sortingroom/room_list.js' %}" defer></script>
 </head>
 <body>
@@ -13,16 +13,16 @@
         <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="{% url 'profile:home' users.pk %}">HOME</a></li>
+                <li><a href="{% url 'profile:home' request.session.pk %}">HOME</a></li>
                 <li><a href="#explore">EXPLORE</a></li>
                 <li><a href="#rooms">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
-            <div class = "profile-container">
-                <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.firstname}} {{users.lastname}}</strong></a>
-            </div>
+        <div class = "profile-container">
+            <a href="{% url 'profile:user_profile' request.session.pk %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
+        </div>
     </header>
 
     <div class="centerpoint">
