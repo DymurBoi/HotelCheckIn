@@ -71,7 +71,7 @@
         {% else %}
             <img src="{% static 'dashboard/images/default-room.jpg' %}" alt="Default Room Photo" class="room-photo">
         {% endif %}
-            <h2>{{ room.room_id }}</h2>
+            <h2>{{ room.room.room_id }}</h2>
             <p>Price: ${{ room.room_category.room_price }}</p>
             <p>Available Room: {{ room.room.is_available }}</p>
             <a href="{% url 'dashboard:room_detail' room.id %}">

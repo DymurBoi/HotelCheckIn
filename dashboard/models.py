@@ -16,8 +16,8 @@ class RoomCategory(models.Model):
 class Room(models.Model):
     room_category = models.ForeignKey(RoomCategory, on_delete=models.CASCADE)
     room_id = models.CharField(max_length=10)
-    room_photo = models.ImageField(default = 'fallback.png', blank=True)
     is_available = models.BooleanField(default=True)
+    is_reserved = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.room_id} - ({self.room_category.category_id}) - Available: {self.is_available}"
