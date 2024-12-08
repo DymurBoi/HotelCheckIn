@@ -71,7 +71,7 @@ function updatePaymentMessage(total_cost) {
     if (paymentMethod) {
         paymentMessages.style.display = 'block';
         messageElement1.innerText = `You have chosen to pay by ${paymentMethod}. You will be forwarded to the ${paymentMethod} website to proceed with this transaction.`;
-        messageElement2.innerText = `The total amount you will be charged is: ₱${totalAmount}.`;
+        messageElement2.innerText = `The total amount you will be charged is: $${totalAmount}.`;
     } else {
         messageElement.style.display = 'none'; // Hide the message if no method is selected
     }

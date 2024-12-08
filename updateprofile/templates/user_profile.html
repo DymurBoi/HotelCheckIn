@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/profile_style.css' %}">
+    <script src="{% static 'js/reserve_script.js' %}" defer></script>
     <title>User Profile</title>
 </head>
 <body>
     <header>
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
+                <li><a href="{% url 'profile:home' request.session.pk %}">HOME</a></li>
                 <li><a href="#explore">EXPLORE</a></li>
                 <li><a href="#rooms">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
@@ -19,8 +21,8 @@
             </ul>
         </nav>
         <div class="header-buttons">
-            <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /><strong>{{users.name}}</strong></a>
-            <button class="btn book-btn">Book Now</button>
+            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
+            <button onclick="viewReservations()" class="btn book-btn">Reservations</button>
         </div>
     </header>
     <div class="profile-container">
@@ -44,6 +46,8 @@
             {{ users.address }}
         </div>
     </div>
-    <a class="btn apply-btn" href="{% url 'profile:update_profile' users.pk %}"><button class="btn-a">Edit Profile</button></a>
+    <div class="header-buttons">
+    <a class="btn apply-btn" href="{% url 'profile:update_profile' %}"><button class="btn-a">Edit Profile</button></a>
+    </div>
 </body>
 </html>
