@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login, logout
 from sortingroom.models import Reservation
+from django.db.models import Q
 
 def admin_login(request):
     if request.method == 'POST':
@@ -31,25 +32,25 @@ def admin_landing(request):
     admin_id = request.user.id
     username = request.user.username
 
-    booked_room_ids = Room.objects.filter(is_available=False).values_list('id', flat=True)
     # Get all reserved room IDs from reservations
     reserved_room_ids = Reservation.objects.values_list('room_id', flat=True)
 
-    # Exclude rooms that are reserved
+    # Get IDs of booked rooms (is_available=False)
+    booked_room_ids = Room.objects.filter(is_available=False).values_list('room_id', flat=True)
+
+    # Available rooms: is_available=True and not in reserved rooms
     rooms_available = Room.objects.filter(is_available=True).exclude(id__in=reserved_room_ids)
 
-    # Query for booked rooms
+    # Booked rooms: is_available=False
     rooms_booked = Room.objects.filter(is_available=False)
 
-    # Fetch all reservations for display
-    reservation = Reservation.objects.exclude(room_id__in=booked_room_ids)
+    # Reservations: Include only reservations for booked rooms
 
     context = {
         'admin_id': admin_id,
         'username': username,
         'rooms_available': rooms_available,
         'rooms_booked': rooms_booked,  
-        'reservation': reservation,
     }
 
     return render(request, 'dashboard/admin_landing.html', context)
