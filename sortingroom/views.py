@@ -119,7 +119,7 @@ def payment_page(request, reservation_id, total_cost):
 
     if request.method == 'POST':
         # Process payment (mocked here as successful)
-        reservation.room.is_reserved = True
+        reservation.room.is_available = False
         reservation.room.save()
 
         # Update payment status to "Paid"

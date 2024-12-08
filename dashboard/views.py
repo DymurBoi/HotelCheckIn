@@ -35,21 +35,22 @@ def admin_landing(request):
     # Get all reserved room IDs from reservations
     reserved_room_ids = Reservation.objects.values_list('room_id', flat=True)
 
+    # Get IDs of booked rooms (is_available=False)
+    booked_room_ids = Room.objects.filter(is_available=False).values_list('room_id', flat=True)
+
     # Available rooms: is_available=True and not in reserved rooms
     rooms_available = Room.objects.filter(is_available=True).exclude(id__in=reserved_room_ids)
 
     # Booked rooms: is_available=False
     rooms_booked = Room.objects.filter(is_available=False)
 
-    # Reservations: Exclude reservations where room is in available or booked rooms
-    reservation = Reservation.objects.all()
+    # Reservations: Include only reservations for booked rooms
 
     context = {
         'admin_id': admin_id,
         'username': username,
         'rooms_available': rooms_available,
         'rooms_booked': rooms_booked,  
-        'reservation': reservation,
     }
 
     return render(request, 'dashboard/admin_landing.html', context)

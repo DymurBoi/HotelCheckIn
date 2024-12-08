@@ -10,7 +10,7 @@ class RoomForm(forms.ModelForm):
 
     class Meta:
         model = Room
-        fields = ['room_id', 'is_available', 'room_category']
+        fields = ['room_id', 'room_category','is_available']
 
 
 class CategoryForm(forms.ModelForm):
