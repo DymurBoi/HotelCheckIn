@@ -19,7 +19,7 @@
             </ul>
         </nav>
         <div class="header-buttons">
-            <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
+            <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /><strong>{{users.name}}</strong></a>
             <button class="btn book-btn">Book Now</button>
         </div>
     </header>

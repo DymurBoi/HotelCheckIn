@@ -119,16 +119,18 @@ header li {
     width: 100%;
     max-width: 500px;
     padding: 40px;
-    background-color: #c9c4bd;
+    background-color: rgba(212, 204, 187, 0.5); /* Transparent background */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
 
 .image_container{
     display: flex;
     justify-content: center;
     width: 100%;
     height: 50px;
+    margin-bottom: 10px;
 }
 
 .image_container img{
@@ -217,7 +219,17 @@ div h2{
     text-decoration: none;
 }
 
+.separator {
+    height: 1px;
+    background-color: #ccc;
+    margin: 1px 0;
+}
 
+h3{
+    padding-bottom: 10px;
+    color: #583E0B;
+    font-weight: bolder;
+}
 
 
 
