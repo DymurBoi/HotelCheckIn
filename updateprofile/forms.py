@@ -23,9 +23,10 @@ class UserForm(forms.ModelForm):
             'profile_pic':'Profile Picture'
         }
         widgets = {
-                'profile_pic': forms.ClearableFileInput(attrs={
-                'initial_text': '',
-                'input_text': '',
-                'clear_checkbox_label': '',
-            }),
+            'firstname': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Enter your first name'}),
+            'lastname': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Enter your last name'}),
+            'username': forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'Enter your email'}),
+            'address': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Enter your address'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Enter your phone number'}),
+            'profile_pic': forms.ClearableFileInput(attrs={'class': 'form-file-input'}),
         }

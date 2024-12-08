@@ -6,13 +6,14 @@ dialog.addEventListener("click", (e) => {
     }
 });
 
-function openDialog(roomId, roomPhoto, roomType, roomPrice, roomDesc) {
+function openDialog(roomId, roomPhoto, roomType, roomPrice, roomCheckIn, roomCheckOut) {
     const centerpoint = document.querySelector('.centerpoint');
 
     document.getElementById('dialog-room-photo').src = roomPhoto;
     document.getElementById('dialog-room-type').innerText = `${roomType} Room`;
-    document.getElementById('dialog-room-price').innerText = `$${roomPrice}/night`;
-    document.getElementById('dialog-room-desc').innerText = roomDesc;
+    document.getElementById('dialog-room-price').innerText = `Total Payment: $${roomPrice}`;
+    document.getElementById('dialog-room-check-in').innerText = `Reservation Date: ${roomCheckIn}`;
+    document.getElementById('dialog-room-check-out').innerText = `Check Out: ${roomCheckOut}`;
 
     const reserveButton = dialog.querySelector('button[onclick^="goToReserve"]');
     if (reserveButton) { // Check if reserveButton exists

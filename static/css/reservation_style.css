@@ -242,7 +242,7 @@ header li {
 
 
 .inclusion-icon img {
-    padding-left: 1em;
+    padding-left: 10px;
     height: 25px;
     width: 25px;
 }
@@ -264,7 +264,7 @@ dialog {
     margin: auto;
     border: 0px;
     display: flex;
-    width: 70%;
+    width: 50%;
     height: 500px;
     z-index: 1000;
 

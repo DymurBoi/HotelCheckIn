@@ -22,6 +22,9 @@ def update_user(request):
         form = UserForm(request.POST, request.FILES, instance=users)  # Corrected line
         if form.is_valid():
             form.save()
+            request.session['profile_pic']=users.profile_pic.url
+            request.session['firstname']=users.firstname
+            request.session['lastname']=users.lastname
             return redirect('profile:user_profile')  
         else:
             print(form.errors)  # Debugging form errors

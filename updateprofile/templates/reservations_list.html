@@ -21,7 +21,7 @@
             </ul>
         </nav>
         <div class="header-buttons">
-            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{user.profile_pic.url}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
+            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
             <button onclick="viewReservations()"class="btn book-btn">Reservations</button>
         </div>
     </header>
@@ -29,16 +29,16 @@
             <div class="row">
                 {% for reservation in reservations %}
                     <div class="col-md-4 mb-4">
-                        <div class="card" onclick="openDialog('{{ reservation.room.id }}', '{{ reservation.room.room_photo.url }}', '{{ reservation.room.room_type }}', '{{ reservation.room.room_price }}', '{{ reservation.room.room_desc }}')">
+                        <div class="card" onclick="openDialog('{{ reservation.room.id }}', '{{ reservation.room.room_category.room_photo.url }}', '{{ reservation.room.room_category }}', '{{ reservation.payment.payment_total }}', '{{ reservation.check_in }}', '{{ reservation.check_out }}')">
                             {% if reservation.room.room_photo.url %}
-                                <img src="{{ reservation.room.room_photo.url }}" class="card-img-top" alt="{{ reservation.room.room_type }}">
+                                <img src="{{ reservation.room.room_category.room_photo.url }}" class="card-img-top" alt="{{ reservation.room.room_type }}">
                             {% else %}
                                 <img src="{% static 'sortingroom/default_image.jpg' %}" class="card-img-top" alt="No image available">
                             {% endif %}
                             <div class="card-body">
-                                <h5 class="card-title">{{ reservation.room.room_type }}</h5>
-                                <p class="card-text">${{ reservation.room.room_price }}</p>
-                                <p class="card-text">Rooms Available: {{ reservation.room.rooms_available }}</p>
+                                <h5 class="card-title">{{ reservation.room.room_category }}</h5>
+                                <p class="card-text">Total Payment: {{ reservation.payment.payment_total }}</p>
+                                <p class="card-text">Reservation Date: {{ reservation.check_in }}</p>
                                 <hr>
                                 <div class="card-inclusion">
                                     <h4>Inclusions:</h4>
@@ -57,7 +57,8 @@
                             <div class="dialog-info">
                                 <h1 id="dialog-room-type"></h1>
                                 <p id="dialog-room-price"></p>
-                                <p id="dialog-room-desc"></p>
+                                <p id="dialog-room-check-in"></p>
+                                <p id="dialog-room-check-out"></p>
                                 <div class="dialog-inclusion">
                                     <h4>Inclusions:</h4>
                                     <div class="inclusion-icon">
@@ -66,7 +67,6 @@
                                         <img src="{% static 'sortingroom/wifi.png' %}" alt="WiFi">                 
                                     </div>
                                 </div>
-                                <button onclick="viewRoom('{{user.pk}}')">View Room</button>  
                             </div>
                             <button id="close-button" type="button" onclick="closeDialog()" aria-label="Close dialog">
                                 <img src="{% static 'sortingroom/close-button.png' %}" alt="Close">
@@ -74,8 +74,6 @@
                         </dialog>
                     </div>  
                 {% endfor %}
-            </div>
-            
-            
+            </div>   
 </body>
 </html>

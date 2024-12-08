@@ -11,7 +11,7 @@ class RoomCategory(models.Model):
         return Room.objects.filter(room_category=self, is_available=True).count()
 
     def __str__(self):
-        return f"{self.id} {self.category_id} - {self.category_id} - P{self.room_price}"
+        return f"{self.category_id} - P{self.room_price}"
 
 class Room(models.Model):
     room_category = models.ForeignKey(RoomCategory, on_delete=models.CASCADE)
