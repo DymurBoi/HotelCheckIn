@@ -20,7 +20,7 @@
             </ul>
         </nav>
             <div class = "profile-container">
-                <a href="{% url 'profile:user_profile' request.session.pk %}" class="user-profile">
+                <a href="{% url 'profile:user_profile' %}" class="user-profile">
                     <img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" />
                     <strong>{{request.session.firstname}} {{request.session.lastname}}</strong>
                 </a>
