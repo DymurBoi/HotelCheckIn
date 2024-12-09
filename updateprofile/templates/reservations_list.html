@@ -20,9 +20,9 @@
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
-        <div class="header-buttons">
-            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
-            <button onclick="viewReservations()"class="btn book-btn">Reservations</button>
+        <div class="profile-container">
+            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" />
+                <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
         </div>
     </header>
     <h1 class="res-name">Reservation List</h1>

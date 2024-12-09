@@ -1,4 +1,4 @@
-function openDialog(roomId, catId, roomPhoto, roomPrice, roomDesc) {
+function openRoomDialog(roomId, catId, roomPhoto, roomPrice, roomDesc) {
     console.log("Room ID:", roomId, "Category ID:", catId); // Debugging line
     const dialog = document.getElementById('room_selection-dialog');
     const centerpoint = document.querySelector('.centerpoint');
@@ -18,7 +18,7 @@ function openDialog(roomId, catId, roomPhoto, roomPrice, roomDesc) {
     dialog.showModal();
 }
 
-function closeDialog() {
+function closeRoomDialog() {
     const dialog = document.getElementById('room_selection-dialog');
     const centerpoint = document.querySelector('.centerpoint');
 
@@ -37,24 +37,47 @@ function goToReserve(roomId) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const reservationForm = document.getElementById('reservationForm');
-    
+
     reservationForm.addEventListener('submit', (event) => {
-        const checkInDate = new Date(document.getElementById('check_in').value);
-        const checkOutDate = new Date(document.getElementById('check_out').value);
+        // Get check-in and check-out dates
+        const checkInInput = document.getElementById('id_check_in');
+        const checkOutInput = document.getElementById('id_check_out');
+        const checkInDate = new Date(checkInInput.value);
+        const checkOutDate = new Date(checkOutInput.value);
+
+        // Get today's date (without time for accurate comparison)
         const today = new Date();
-        today.setHours(0, 0, 0, 0); // Remove time portion for comparison
-        
-        // Check if the check-in date is before today
-        if (checkInDate < today) {
-            event.preventDefault(); // Prevent form submission
-            alert('Check-in date must be today or later.');
+        today.setHours(0, 0, 0, 0);
+
+        // Check if check-in date is valid
+        if (isNaN(checkInDate.getTime())) {
+            event.preventDefault();
+            alert('Please select a valid check-in date.');
+            checkInInput.focus();
             return;
         }
 
-        // Check if the check-in date is after or equal to the check-out date
+        // Check if check-out date is valid
+        if (isNaN(checkOutDate.getTime())) {
+            event.preventDefault();
+            alert('Please select a valid check-out date.');
+            checkOutInput.focus();
+            return;
+        }
+
+        // Check if check-in date is today or later
+        if (checkInDate < today) {
+            event.preventDefault();
+            alert('Check-in date must be today or later.');
+            checkInInput.focus();
+            return;
+        }
+
+        // Check if check-in date is before check-out date
         if (checkInDate >= checkOutDate) {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault();
             alert('Check-in date must be before the check-out date.');
+            checkOutInput.focus();
             return;
         }
     });
@@ -71,7 +94,7 @@ function updatePaymentMessage(total_cost) {
     if (paymentMethod) {
         paymentMessages.style.display = 'block';
         messageElement1.innerText = `You have chosen to pay by ${paymentMethod}. You will be forwarded to the ${paymentMethod} website to proceed with this transaction.`;
-        messageElement2.innerText = `The total amount you will be charged is: $${totalAmount}.`;
+        messageElement2.innerText = `The total amount you will be charged is: ₱${totalAmount}.`;
     } else {
         messageElement.style.display = 'none'; // Hide the message if no method is selected
     }

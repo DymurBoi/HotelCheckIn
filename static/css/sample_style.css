@@ -60,6 +60,10 @@ ul a:hover {
     transition: all 0.3s ease;
 }
 
+.profile-container{
+    display: flex;
+}
+
 .profile-container a:hover {
     color: #6c543b;
     transition: all 0.3s ease;
@@ -328,4 +332,5 @@ header li {
 .user-profile {
     display: flex;
     align-items: center; /* Aligns items vertically centered */
+    margin-right: 15px;
 }

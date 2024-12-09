@@ -18,13 +18,16 @@ class Reservation(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
 
     def clean(self):
-        # Check if check-out is after check-in
-        if self.check_out <= self.check_in:
-            raise ValidationError("Check-out date must be after check-in date.")
+            errors = {}
 
-        # Optional: Ensure check-in is not in the past
-        if self.check_in < date.today():
-            raise ValidationError("Check-in date cannot be in the past.")
+            if self.check_out <= self.check_in:
+                errors['check_out'] = "Check-out date must be after check-in date."
+
+            if self.check_in < date.today():
+                errors['check_in'] = "Check-in date cannot be in the past."
+
+            if errors:
+                raise ValidationError(errors)
 
     def __str__(self):
         return f'Reservation for {self.first_name} {self.last_name} - {self.room.room_category.category_id} Room {self.room.room_id}'

@@ -31,9 +31,12 @@ nav {
     justify-content: center;
 }
 
+ul a{
+    padding: 20px;
+}
+
 header a {
     font-size: 15px;
-    padding: 15px;
     text-decoration: none;
     color: rgb(6, 6, 6);
     border-bottom-color: transparent;
@@ -47,18 +50,42 @@ ul a:hover {
     transition: all 0.3s ease;
 }
 
+.book-now{
+    background-color: #6c543b;
+    padding: 20px 20px 5px 20px;
+    color: #ffffff;
+    font-weight: 800;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 20px;
+}
 
+.book-now:hover{
+    background-color: #947e66;
+    transition: all 0.3s ease;
+}
+
+.profile-container{
+    display: flex;
+}
+
+.profile-container a:hover {
+    color: #6c543b;
+    transition: all 0.3s ease;
+}
 
 header li {
     font-size: 15px;
     display: inline-block;
     text-decoration: none;
     padding: 5px 10px;
+    align-items: center;
 }
 
 .header-buttons {
     display: flex;
     gap: 15px; /* Increased spacing between buttons */
+    align-items: center;
 }
 
 .btn {
@@ -73,18 +100,62 @@ header li {
     transition: background-color 0.3s;
 }
 
+
+
+.btn:hover {
+    background-color: #7a5b43;
+}
+
+.book-btn {
+    background-color: #8b724e; /* Different color for 'Book Now' button */
+}
+
+.book-btn a{
+    background-color: #8b724e; /* Different color for 'Book Now' button */
+    color: #ffffff;
+}
+
+.book-btn:hover {
+    background-color: #7a5b43;
+}
+
+.btn-primary {
+    background-color: #ffffff; /* Change to your desired color */
+    border-color: #8b724e; /* Change border color if needed */
+    border-width: 1px; 
+    border-style: solid;
+    color:#8b724e;
+}
+
+.btn-secondary {
+    background-color: #ffffff; 
+    border-color: #8b724e; 
+    border-width: 1px; 
+    border-style: solid;
+    color:#8b724e;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    background-color: #8b724e;
+    color: white;
+    border-color: #8b724e;
+}
+
+.btn.active {
+    background-color: #8b724e;
+    color: white;
+    border-color: #8b724e;
+}
+
 .user-profile {
     display: flex;
     align-items: center; /* Aligns items vertically centered */
+    margin-right: 15px;
 }
 
-.profile-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2em;
+.profile-container{
     display: flex;
-    flex-direction: column;
-    align-items: left;
 }
 
 .profile-container a:hover {
@@ -157,34 +228,6 @@ header li {
     transform: translateY(5px);
 }
 
-.btn-primary {
-    background-color: #ffffff; /* Change to your desired color */
-    border-color: #8b724e; /* Change border color if needed */
-    border-width: 1px; 
-    border-style: solid;
-    color:#8b724e;
-}
-
-.btn-secondary {
-    background-color: #ffffff; 
-    border-color: #8b724e; 
-    border-width: 1px; 
-    border-style: solid;
-    color:#8b724e;
-}
-
-.btn-primary:hover,
-.btn-secondary:hover {
-    background-color: #8b724e;
-    color: white;
-    border-color: #8b724e;
-}
-
-.btn.active {
-    background-color: #8b724e;
-    color: white;
-    border-color: #8b724e;
-}
 
 .mb-3 a{
     text-decoration: none;

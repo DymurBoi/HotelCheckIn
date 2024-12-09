@@ -33,83 +33,67 @@
                 </div>
                 <div class="details">
                     <h3>Reserved Room: {{ room.room_category.category_id }}</h3>
-                    <p><strong>Price:</strong> P{{ room.room_category.room_price }} per night</p>
+                    <p><strong>Price:</strong> ₱{{ room.room_category.room_price }} per night</p>
                 </div>
             </div>
             
             <form id="reservationForm" method="POST" action="{% url 'sortingroom:reserve_room' room.room_category.id %}">
-                <h2>Enter your details</h2>
                 {% csrf_token %}
+                <h2>Enter your details</h2>
+            
                 <div class="use-account-info">
                     <input type="checkbox" id="use_info_checkbox">
-                    <label for="first_name">Use my information</label>
+                    <label for="use_info_checkbox">Use my information</label>
                 </div>
-                <div class="info two-column">
-                    
+            
+                <div class="two-column">
                     <div>
                         <label for="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" value="" required>
+                        {{ form.first_name }}
                     </div>
                     <div>
                         <label for="last_name">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" value="" required>
+                        {{ form.last_name }}
                     </div>
                 </div>
-
-                <div class="info two-column">
+            
+                <div class="two-column">
                     <div>
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" value="" required>
+                        {{ form.email }}
                     </div>
                     <div>
                         <label for="country">Country/Region</label>
-                        <select id="country" name="country" required>
-                            <option value="" disabled selected>Select your country</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="GB">United Kingdom</option>
-                            <option value="AU">Australia</option>
-                            <option value="IN">India</option>
-                            <option value="PH">Philippines</option>
-                            <option value="SG">Singapore</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
-                            <option value="JP">Japan</option>
-                            <option value="CN">China</option>
-                            <option value="BR">Brazil</option>
-                            <option value="ZA">South Africa</option>
-                        </select>
+                        {{ form.country }}
                     </div>
                 </div>
-
-                <div class="info">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" value="" required>
+            
+                <div>
+                    <label for="phone_number">Phone Number</label>
+                    {{ form.phone }}
                 </div>
-
-                <div class="info two-column">
+            
+                <div class="two-column">
                     <div>
                         <label for="check_in">Check-in Date</label>
-                        <input type="date" id="check_in" name="check_in" required>
+                        {{ form.check_in }}
                     </div>
                     <div>
                         <label for="check_out">Check-out Date</label>
-                        <input type="date" id="check_out" name="check_out" required>
+                        {{ form.check_out }}
                     </div>
                 </div>
-                
-                <div class="info">
+            
+                <div>
                     <label for="special_request">Special Request</label>
-                    <textarea id="special_request" name="special_request" rows="3"></textarea>
+                    {{ form.special_request }}
                 </div>
-
-                <input type="hidden" name="room_id" value="{{ room.id }}">
-                <input type="hidden" name="room_price" value="{{ room.room_price }}">
-                
+            
                 <div class="button-wrapper">
                     <button type="submit" class="next-btn">Next Step ></button>
                 </div>
-            </form>
+            </form>            
+            
         </div>
     </div>
 </body>
@@ -117,34 +101,39 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const checkbox = document.getElementById("use_info_checkbox");
-        const firstNameInput = document.getElementById("first_name");
-        const lastNameInput = document.getElementById("last_name");
-        const emailInput = document.getElementById("email");
-        const phoneInput = document.getElementById("phone");
+    // Get DOM elements
+    const checkbox = document.getElementById("use_info_checkbox");
+    const firstNameInput = document.querySelector("[name='first_name']");
+    const lastNameInput = document.querySelector("[name='last_name']");
+    const emailInput = document.querySelector("[name='email']");
+    const phoneInput = document.querySelector("[name='phone']");
 
-        // User's data passed from Django template
-        const userData = {
-            first_name: "{{ users.firstname|escapejs }}",
-            last_name: "{{ users.lastname|escapejs }}",
-            email: "{{ users.username|escapejs }}",
-            phone: "{{ users.phone_number|escapejs }}"
-        };
+    // User's data passed from Django template
+    const userData = {
+        first_name: "{{ users.firstname|default:''|escapejs }}",
+        last_name: "{{ users.lastname|default:''|escapejs }}",
+        email: "{{ users.username|default:''|escapejs }}",
+        phone: "{{ users.phone_number|default:''|escapejs }}"
+    };
 
+    // Add event listener for the checkbox
+    if (checkbox) {
         checkbox.addEventListener("change", function () {
-            if (checkbox.checked) {
-                // Fill in user data
-                firstNameInput.value = userData.first_name;
-                lastNameInput.value = userData.last_name;
-                emailInput.value = userData.email;
-                phoneInput.value = userData.phone;
+            if (this.checked) {
+                // Pre-fill form inputs with user data
+                if (firstNameInput) firstNameInput.value = userData.first_name || "";
+                if (lastNameInput) lastNameInput.value = userData.last_name || "";
+                if (emailInput) emailInput.value = userData.email || "";
+                if (phoneInput) phoneInput.value = userData.phone || "";
             } else {
-                // Clear fields if unchecked
-                firstNameInput.value = "";
-                lastNameInput.value = "";
-                emailInput.value = "";
-                phoneInput.value = "";
+                // Clear form inputs when unchecked
+                if (firstNameInput) firstNameInput.value = "";
+                if (lastNameInput) lastNameInput.value = "";
+                if (emailInput) emailInput.value = "";
+                if (phoneInput) phoneInput.value = "";
             }
         });
-    });
+    }
+});
+
 </script>

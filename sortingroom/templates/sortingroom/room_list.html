@@ -7,6 +7,7 @@
     <title>Rooms</title>
     <link rel="stylesheet" href="{% static 'sortingroom/room_list.css' %}">
     <script src="{% static 'sortingroom/room_list.js' %}" defer></script>
+    <script src="{% static 'js/reserve_script.js' %}" defer></script>
 </head>
 <body>
     <header>
@@ -20,8 +21,9 @@
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
-        <div class = "profile-container">
+        <div class="profile-container">
             <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
+            <button onclick="viewReservations('{{users.pk}}')"class="btn book-btn">Reservations</button>
         </div>
     </header>
 
@@ -47,7 +49,7 @@
         <div class="row">
             {% for room in room_category %}
                 <div class="col-md-4 mb-4">
-                    <div class="card" onclick="openDialog('{{ room.id }}', '{{ room.category_id }}', '{{ room.room_photo.url }}', '{{ room.room_price }}', '{{ room.room_desc }}')">
+                    <div class="card" onclick="openRoomDialog('{{ room.id }}', '{{ room.category_id }}', '{{ room.room_photo.url }}', '{{ room.room_price }}', '{{ room.room_desc }}')">
                         {% if room.room_photo %}
                             <img src="{{ room.room_photo.url }}" class="card-img-top" alt="{{ room.category_id }}">
                         {% else %}
@@ -91,7 +93,7 @@
                     <button id="reserve-button">Reserve Now</button>
                     
                 </div>
-                <button id="close-button" type="button" onclick="closeDialog()" aria-label="Close dialog">
+                <button id="close-button" type="button" onclick="closeRoomDialog()" aria-label="Close dialog">
                     <img src="{% static 'sortingroom/close-button.png' %}" alt="Close">
                 </button>
             </dialog>
