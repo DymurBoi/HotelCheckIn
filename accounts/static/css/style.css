@@ -167,6 +167,7 @@ body .login-container {
 }
 
 .login-form button {
+    margin-top: 10px;
     width: 100%;
     padding: 10px;
     background-color: #333;
@@ -178,4 +179,35 @@ body .login-container {
 
 .login-form button:hover {
     background-color: #555;
+}
+
+.input-group {
+    margin-bottom: 10px;
+    position: relative; /* Enables absolute positioning of child elements */
+}
+
+.input-group input {
+    /* Ensure input takes full width of the container */
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.toggle-password {
+    position: absolute;
+    bottom: -10px; /* Adjust to position below the input */
+    right: 10px; /* Position at the right edge of the input */
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #000000;
+    text-decoration: underline;
+}
+
+.toggle-password:hover {
+    color: #666;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
 }
