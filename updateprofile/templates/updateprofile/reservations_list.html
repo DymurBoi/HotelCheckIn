@@ -9,6 +9,48 @@
 </head>
 <body>
     {% block content %}
+    <script>
+        function cancelReservation(reservationId) {
+            fetch(`/cancel_reservation/${reservationId}/`, { // Ensure this URL matches `urls.py`
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken"), // Include CSRF token
+                    "Content-Type": "application/json",
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    location.reload(); // Reload page on success
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    
+        // Helper function to get CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                const cookies = document.cookie.split(";");
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name + "=")) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
     <h1 class="res-name">Reservation List</h1>
     <div class="row">
         {% for reservation in reservations %}
@@ -44,21 +86,24 @@
                         <p id="dialog-room-check-in"></p>
                         <p id="dialog-room-check-out"></p>
                         <div class="dialog-inclusion">
-                        <h4>Inclusions:</h4>
-                        <div class="inclusion-icon">
-                            <img src="{% static 'sortingroom/tv.png' %}" alt="TV">
-                            <img src="{% static 'sortingroom/shower.png' %}" alt="Shower">
-                            <img src="{% static 'sortingroom/wifi.png' %}" alt="WiFi">                 
+                            <h4>Inclusions:</h4>
+                            <div class="inclusion-icon">
+                                <img src="{% static 'sortingroom/tv.png' %}" alt="TV">
+                                <img src="{% static 'sortingroom/shower.png' %}" alt="Shower">
+                                <img src="{% static 'sortingroom/wifi.png' %}" alt="WiFi">                 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button id="close-button" type="button" onclick="closeDialog()" aria-label="Close dialog">
-                <img src="{% static 'sortingroom/close-button.png' %}" alt="Close">
-                </button>
+                    <button id="close-button" type="button" onclick="closeDialog()" aria-label="Close dialog">
+                        <img src="{% static 'sortingroom/close-button.png' %}" alt="Close">
+                    </button>
+                    <button onclick="cancelReservation({{ reservation.id }})">Cancel Reservation</button>
                 </dialog>
-            </div>  
+            </div>
     {% endfor %}
     </div>
     {% endblock content %}   
+
+    
 </body>
 </html>

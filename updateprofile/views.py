@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import UserForm
 from accounts.models import CustomUser
@@ -43,6 +44,21 @@ def reservation_list(request):
     }
     return render(request,'updateprofile/reservations_list.html',context)
 
+def cancel_reservation(request):
+    if request.method == "POST":
+        try:
+            # Get reservation by ID
+            reservation = get_object_or_404(Reservation, pk=reservation.id)
+            room = reservation.room
+            room.is_available = True  # Mark room as available
+            room.save()
+            reservation.delete()  # Delete the reservation
+            return JsonResponse({"success": True, "message": "Reservation canceled successfully."})
+        except Exception as e:
+            return JsonResponse({"success": False, "message": f"Error: {str(e)}"}, status=500)
+    else:
+        return JsonResponse({"success": False, "message": "Invalid request method."}, status=405)
+    
 def logout_view(request):
     request.session.flush()  # Clears all session data
     return redirect('account:login')
