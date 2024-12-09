@@ -38,7 +38,8 @@ operational efficiency.
 
 ## ✨Functional Requirements:
 ### 🧑‍💻User Registration and Login
-+ Able to create an account which is required to be able to access the features of the app
++ Able to create an account which is required to be able to access the features of the app.
++ Able to Login using the Registered credentials.
 
 ### 👤 Profile Management
 + User is able to manage the details of the account
@@ -50,7 +51,8 @@ operational efficiency.
 + Rooms are properly filtered and categorized for ease of access for the user
 
 ### 👨‍💼 Admin/Management Features
-+ Admin is able to manage the rooms, users, and other details
++ Admin is able to manage the rooms.
++ Admin/Staff could check out customers.
 
 ### 📅 Reservation
 + Allows users to reserve a room
