@@ -1,3 +1,4 @@
+from pyexpat.errors import messages
 from django.forms import ValidationError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -7,7 +8,7 @@ from django.utils.timezone import now
 from .models import Reservation, Payment
 from dashboard.models import RoomCategory, Room
 from accounts.models import CustomUser
-
+from .forms import ReservationForm
 
 # Create your views here.
 
@@ -34,8 +35,8 @@ def room_category(request):
     })
 
 def reserve_room(request, roomId):
-    pk=request.session.get('pk')
-    users = users = get_object_or_404(CustomUser, pk=pk) 
+    pk = request.session.get('pk')
+    users = get_object_or_404(CustomUser, pk=pk)
     room_category = get_object_or_404(RoomCategory, id=roomId)
     available_room = Room.objects.filter(room_category=room_category, is_available=True).first()
 
@@ -43,45 +44,14 @@ def reserve_room(request, roomId):
         return render(request, 'sortingroom/no_rooms_available.html', {'users': users})
 
     if request.method == 'POST':
-        # Extract data from the form
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        country = request.POST.get('country')
-        phone = request.POST.get('phone')
-        check_in = request.POST.get('check_in')
-        check_out = request.POST.get('check_out')
-        special_request = request.POST.get('special_request')
-
-        # Validate the dates
-        try:
-            check_in_date = datetime.strptime(check_in, "%Y-%m-%d").date()
-            check_out_date = datetime.strptime(check_out, "%Y-%m-%d").date()
-            today = now().date()
-
-            if check_in_date < today:
-                raise ValidationError("Check-in date must be today or later.")
-            if check_in_date >= check_out_date:
-                raise ValidationError("Check-in date must be before the check-out date.")
-
-            # Create the reservation with the available room
-            reservation = Reservation(
-                room=available_room,
-                first_name=first_name,
-                last_name=last_name,
-                email=email,
-                country=country,
-                phone=phone,
-                check_in=check_in_date,
-                check_out=check_out_date,
-                special_request=special_request
-            )
-
-            reservation.full_clean()  # Validate the reservation instance
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save(commit=False)
+            reservation.room = available_room
             reservation.save()
 
             # Calculate total cost
-            stay_duration = (check_out_date - check_in_date).days
+            stay_duration = (reservation.check_out - reservation.check_in).days
             total_cost = stay_duration * float(room_category.room_price)
 
             # Create a payment instance
@@ -92,26 +62,17 @@ def reserve_room(request, roomId):
             )
             payment.save()
 
-            # Redirect to payment page
             return redirect('sortingroom:payment_page', reservation_id=reservation.id, total_cost=total_cost)
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:
+        form = ReservationForm()
 
-        except ValidationError as e:
-            # Handle validation errors
-            return render(request, 'sortingroom/reserve_room.html', {
-                'room': available_room,
-                'errors': e.messages,
-                'input_data': request.POST
-            })
-        except ValueError:
-            # Handle date parsing errors
-            return render(request, 'sortingroom/reserve_room.html', {
-                'room': available_room,
-                'errors': ["Invalid date format. Please enter dates in YYYY-MM-DD format."],
-                'input_data': request.POST
-            })
-
-    return render(request, 'sortingroom/reserve_room.html', {'room': available_room, 'users': users})
-
+    return render(request, 'sortingroom/reserve_room.html', {
+        'room': available_room,
+        'form': form,
+        'users': users
+    })
 def payment_page(request, reservation_id, total_cost):
     users = request.user
     reservation = get_object_or_404(Reservation, id=reservation_id)
