@@ -12,10 +12,6 @@ This project provides a platform for guests which offers quick, seamless service
 prompting hotels to adopt modern digital solutions. The Hotel Check-In System aims
 to streamline the check-in/out process, enhance user experience, and improve
 operational efficiency. 
-## Key Features:
-+ feature 1
-+ feature 2
-+ feature 3
 
 ---
 
