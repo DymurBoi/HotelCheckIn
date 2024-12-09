@@ -1,4 +1,4 @@
-# 🏨 Project Title: Hotel Checkin In System
+# 🏨 Hotel Check-In In System
 ---
 ## Group Members:
 - Joshua Jamisola
@@ -29,7 +29,42 @@ operational efficiency.
 
 ![Font Awesome](https://img.shields.io/badge/Font%20Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
 
+---
+## Getting Started
 
+Before you get started and run the app you need to install a few things
+
+### Prerequisites
+
+* Virtual Environment
+  ```sh
+  python -m venv myenv
+  ```
+* Activate Virtual Environment
+  ```sh
+  myenv\Scripts\activate
+  ```
+* Django
+  ```sh
+  pip install django
+  ```
+* Pillow
+  ```sh
+  pip install Pillow
+  ```
+
+### Installation
+Here are the following steps in order to run the app:
+
+1. Clone the repository or download the files
+2. Activate Virtual Environment
+   ```sh
+   myenv\Scripts\activate
+   ```
+3. Run the server
+   ```sh
+   py manage.py runserver
+   ```
 ---
 
 ## ✨Functional Requirements:
