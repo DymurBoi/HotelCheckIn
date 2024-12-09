@@ -83,6 +83,7 @@ body .login-container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 420px; 
     text-align: center;
+    height: 350px;
 }
 
 .login-form h2 {
@@ -90,13 +91,14 @@ body .login-container {
 }
 
 .login-form label {
+    right: 10px;
     display: block;
     text-align: left;
     margin-bottom: 5px;
 }
 
 .login-form input {
-    width: 80%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -113,6 +115,7 @@ body .login-container {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    bottom : 50px;
 }
 
 .login-form button:hover {
@@ -343,3 +346,36 @@ body .login-container {
     background-color:#907c56;
 }
 
+.input-group {
+    margin-bottom: 10px;
+    position: relative; /* Enables absolute positioning of child elements */
+}
+
+.input-group input {
+    /* Ensure input takes full width of the container */
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.toggle-password {
+    position: absolute;
+    bottom: -10px; /* Adjust to position below the input */
+    right: 15px; /* Position at the right edge of the input */
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #000000;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.toggle-password:hover {
+    color: #666;
+}
+
+label {
+    right: 20px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+
+}
