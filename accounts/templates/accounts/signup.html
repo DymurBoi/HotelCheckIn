@@ -1,23 +1,75 @@
-    <!-- signup.html -->
-    {% extends 'base/nav.html' %}
-    {% load static %}
+{% extends 'base/nav.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
     {% block title %}Sign Up{% endblock %}
-
-    {% block content %}
-    <div class="login-container">
-     
+    <!-- Include Font Awesome for the eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .toggle-password {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+<div class="login-container">
     <div class="login-form">
         <h2>Sign Up</h2>
         <form method="post">
-        <div class= "input">
             {% csrf_token %}
-            {{form.as_p}}
-        </div>
-        <button type="submit">Sign Up</button>
+            {{ form.non_field_errors }}
+            <div class="input-group">
+                <label for="id_username">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="input-group">
+                <label for="id_firstname">First Name</label>
+                {{ form.firstname }}
+            </div>
+            <div class="input-group">
+                <label for="id_lastname">Last Name</label>
+                {{ form.lastname }}
+            </div>
+            <div class="input-group">
+                <label for="id_phone_number">Phone Number</label>
+                {{ form.phone_number }}
+            </div>
+            <div class="input-group">
+                <label for="id_password">Password</label>
+                {{ form.password }}
+                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('id_password', this)"></i>
+            </div>
+            <button type="submit">Sign Up</button>
         </form>
-        <p>Already had an account? <a href="{% url 'account:login' %}">Log in</a></p>  
+        <p>Already have an account? <a href="{% url 'account:login' %}">Log in</a></p>
     </div>
-    </div>
+</div>
 
-
-    {% endblock %}
+<script>
+    function togglePasswordVisibility(fieldId, toggleIcon) {
+        const passwordField = document.getElementById(fieldId);
+        const isPasswordVisible = passwordField.type === 'text';
+        passwordField.type = isPasswordVisible ? 'password' : 'text';
+        toggleIcon.classList.toggle('fa-eye');
+        toggleIcon.classList.toggle('fa-eye-slash');
+    }
+</script>
+{% endblock %}
+</body>
+</html>
