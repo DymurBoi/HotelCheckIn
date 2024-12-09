@@ -43,14 +43,16 @@ def admin_landing(request):
 
     # Booked rooms: is_available=False
     rooms_booked = Room.objects.filter(is_available=False)
-
+    res=Reservation.objects.filter(room__is_available=False)
+    
     # Reservations: Include only reservations for booked rooms
 
     context = {
         'admin_id': admin_id,
         'username': username,
         'rooms_available': rooms_available,
-        'rooms_booked': rooms_booked,  
+        'rooms_booked': rooms_booked,
+        'try':res  
     }
 
     return render(request, 'dashboard/admin_landing.html', context)

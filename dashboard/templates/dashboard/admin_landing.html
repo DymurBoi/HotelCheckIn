@@ -60,8 +60,24 @@
         {% empty %}
             <p>No booked rooms at the moment.</p>
         {% endfor %}
+        
     </div>
 
-   
+    {% for res in try %}
+    <div class="card-container">
+        {% if res.room.room_category.room_photo %}
+        <img src="{{ res.room.room_category.room_photo.url }}" alt="Room Photo" class="room-photo">
+    {% else %}
+        <img src="{% static 'dashboard/images/default-room.jpg' %}" alt="Default Room Photo" class="room-photo">
+    {% endif %}
+        <h2>Room# {{ res.room.room_id }} - {{room.room_category.category_id}}</h2>
+        <p>Price: ${{ room.room_category.room_price }}</p>
+        <p>Available Room: {{ room.is_available }}</p>
+        <p>Reserved By: {{ res.first_name }} {{ res.last_name }}</p>
+        <a href="{% url 'dashboard:room_detail' res.room.id %}">
+            <button>Modify Room</button>
+        </a>
+    </div>
+    {% endfor %}
 </body>
 </html>
