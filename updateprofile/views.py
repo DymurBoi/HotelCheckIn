@@ -43,3 +43,6 @@ def reservation_list(request):
     }
     return render(request,'updateprofile/reservations_list.html',context)
 
+def logout_view(request):
+    request.session.flush()  # Clears all session data
+    return redirect('account:login')

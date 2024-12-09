@@ -11,18 +11,21 @@
 <body>
     <div class="wrapper">
     <header>
-        <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
+        <a href="{% url 'sortingroom:room_category' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
         <nav>
             <ul>
-                <li><a href="{% url 'sortingroom:room_category'%}">HOME</a></li>
-                <li><a href="#explore">EXPLORE</a></li>
-                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="{% url 'sortingroom:room_category' %}">HOME</a></li>
+                <li><a href="{% url 'profile:reservations' %}">RESERVATIONS</a></li>
+                <li><a href="{% url 'sortingroom:room_category' %}">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
-        <div class = "profile-container">
+        <div class="header-buttons">
             <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
+            <a href="{% url 'profile:logout' %}">
+                <button class="btn book-btn">Logout</button>
+            </a>
         </div>
     </header>
     <main>

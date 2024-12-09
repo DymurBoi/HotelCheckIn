@@ -32,10 +32,16 @@ header a {
     padding: 15px;
     text-decoration: none;
     color: rgb(6, 6, 6);
-    border-bottom-color: transparent;
+    border-bottom-color: transparent; /* Remove underline effect */
 }
 
 header a:hover {
+    color: rgb(6, 6, 6); /* Keep the same color on hover */
+    border-bottom-style: none; /* Remove the underline when hovering */
+    border-bottom-width: 0; /* Remove underline when hovering */
+    transition: none; /* Remove transition effect */
+}
+ul a:hover {
     color: #72614f;
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
