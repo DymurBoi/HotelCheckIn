@@ -17,8 +17,8 @@
                 <li><a href="{% url 'profile:home' request.session.pk %}">HOME</a></li>
                 <li><a href="#explore">EXPLORE</a></li>
                 <li><a href="#rooms">ROOMS</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="{% url 'sortingroom:about' %}">ABOUT</a></li>
+                <li><a href="{% url 'sortingroom:about' %}#contact">CONTACT</a></li>
             </ul>
         </nav>
         <div class="profile-container">
