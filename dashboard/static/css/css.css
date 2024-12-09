@@ -187,7 +187,7 @@ body .login-container {
 }
 .room-card-container {
     width: 250px;
-    height: 500px;
+    height: 400px;
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -216,8 +216,7 @@ body .login-container {
 
 .room-card-container input {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
+    padding: 2px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
