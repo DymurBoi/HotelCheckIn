@@ -70,7 +70,7 @@ h2{
     margin-bottom: 20px; 
     color: #7C6A46;
 }
-.login-container {
+body .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,7 +96,7 @@ h2{
 }
 
 .login-form input {
-    width: 90%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
