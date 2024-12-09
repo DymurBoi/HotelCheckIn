@@ -21,7 +21,7 @@
             </ul>
         </nav>
         <div class = "profile-container">
-            <a href="{% url 'profile:user_profile' request.session.pk %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
+            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
         </div>
     </header>
 
@@ -78,7 +78,6 @@
                 <img id="dialog-room-photo" src="" alt="Room Photo">
                 <div class="dialog-info">
                     <h1 id="dialog-category-id"></h1>
-                    <h2>Check the available rooms. Reserve a room the same day you arrive at our hotel!</h2>
                     <p id="dialog-room-price"></p>
                     <p id="dialog-room-desc"></p>
                     <div class="dialog-inclusion">

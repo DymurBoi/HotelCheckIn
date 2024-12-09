@@ -6,25 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rooms</title>
     <link rel="stylesheet" href="{% static 'css/sample_style.css' %}">
+    <script src="{% static 'js/reserve_script.js' %}" defer></script>
 </head>
 <body>
     <header>
         <img src="{% static 'images/logo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#explore">EXPLORE</a></li>
-                <li><a href="{% url 'sortingroom:room_category' %}">ROOMS</a></li>
+                <li><a href="{% url 'profile:home' users.pk %}">HOME</a></li>
+                <li><a href="{% url 'sortingroom:room_category'%}">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
         <div class="header-buttons">
-            <div class = "profile-container">
-                <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" />
-                <strong>{{users.firstname}} {{users.lastname}}</strong></a>
-            </div>
-            <a href="{% url 'sortingroom:room_category' %}" class="book-now">BOOK NOW</a>
+            <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
+            <button onclick="viewReservations('{{users.pk}}')"class="btn book-btn">Reservations</button>
         </div>
     </header>
 <main></main>

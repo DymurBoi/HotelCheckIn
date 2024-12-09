@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/reservation_style.css' %}">
+    <script src="{% static 'js/reserve_script.js' %}" defer></script>
+    <title>Reservation List</title>
+</head>
+<body>
+    <header>
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="{% url 'profile:home' user.pk %}">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
+            <button onclick="viewReservations()"class="btn book-btn">Reservations</button>
+        </div>
+    </header>
+    <h1 class="res-name">Reservation List</h1>
+            <div class="row">
+                {% for reservation in reservations %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card" onclick="openDialog('{{ reservation.room.id }}', '{{ reservation.room.room_category.room_photo.url }}', '{{ reservation.room.room_category }}', '{{ reservation.payment.payment_total }}', '{{ reservation.check_in }}', '{{ reservation.check_out }}')">
+                            {% if reservation.room.room_category.room_photo %}
+                                <img src="{{ reservation.room.room_category.room_photo.url }}" class="card-img-top" alt="{{ reservation.room.room_type }}">
+                            {% else %}
+                                <img src="{% static 'sortingroom/default_image.jpg' %}" class="card-img-top" alt="No image available">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ reservation.room.room_category }}</h5>
+                                <p class="card-text">Total Payment: {{ reservation.payment.payment_total }}</p>
+                                <p class="card-text">Reservation Date: {{ reservation.check_in }}</p>
+                                <hr>
+                                <div class="card-inclusion">
+                                    <h4>Inclusions:</h4>
+                                    <div class="inclusion-icon">
+                                        <img src="{% static 'sortingroom/tv.png' %}" alt="TV">
+                                        <img src="{% static 'sortingroom/shower.png' %}" alt="Shower">
+                                        <img src="{% static 'sortingroom/wifi.png' %}" alt="WiFi">                   
+                                    </div>
+                                </div>
+                            </div>                         
+                        </div>
+                    </div>  
+                    <div class="centerpoint">
+                        <dialog id="room_selection-dialog1">
+                            <img id="dialog-room-photo" src="" alt="Room Photo">
+                            <div class="dialog-info">
+                                <h1 id="dialog-room-type"></h1>
+                                <p id="dialog-room-price"></p>
+                                <p id="dialog-room-check-in"></p>
+                                <p id="dialog-room-check-out"></p>
+                                <div class="dialog-inclusion">
+                                    <h4>Inclusions:</h4>
+                                    <div class="inclusion-icon">
+                                        <img src="{% static 'sortingroom/tv.png' %}" alt="TV">
+                                        <img src="{% static 'sortingroom/shower.png' %}" alt="Shower">
+                                        <img src="{% static 'sortingroom/wifi.png' %}" alt="WiFi">                 
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="close-button" type="button" onclick="closeDialog()" aria-label="Close dialog">
+                                <img src="{% static 'sortingroom/close-button.png' %}" alt="Close">
+                            </button>
+                        </dialog>
+                    </div>  
+                {% endfor %}
+            </div>   
+</body>
+</html>
