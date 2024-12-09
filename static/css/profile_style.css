@@ -156,6 +156,7 @@ header li {
     display: flex;
     flex-direction: column;
     align-items: left;
+    height: 370px;
 }
 
 /* Profile header styling */
@@ -188,6 +189,7 @@ header li {
 /* Form styling */
 .info-container{
     width: 100%;
+    margin-bottom: 200px;
     display: flex;
     flex-direction: column;
     font-size: 20px;
@@ -196,7 +198,7 @@ header li {
 .info-group {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border-top: 1px solid #ddd;
     padding-top: 15px;
 }
@@ -240,6 +242,8 @@ input[type="file"] + a, input[type="file"] + span {
 .form-update {
     max-width: 600px;
     margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 250px;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -278,6 +282,7 @@ input[type="file"] + a, input[type="file"] + span {
     background-color: #fff;
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 10px;
 }
 
 /* Input field hover and focus effects */
@@ -301,7 +306,7 @@ input[type="file"] + a, input[type="file"] + span {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background-color: #007bff;
+    background-color: #B8A588;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -311,7 +316,7 @@ input[type="file"] + a, input[type="file"] + span {
 }
 
 .apply-btn:hover {
-    background-color: #0056b3;
+    background-color: #8b724e;
 }
 
 /* Back to profile button (as a link styled like a button) */
@@ -321,16 +326,16 @@ input[type="file"] + a, input[type="file"] + span {
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    color: #007bff;
+    color: #B8A588;
     background-color: transparent;
-    border: 2px solid #007bff;
+    border: 2px solid #B8A588;
     border-radius: 4px;
     text-decoration: none;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .back-btn:hover {
-    background-color: #007bff;
+    background-color: #8b724e;
     color: #fff;
 }
 
@@ -352,7 +357,16 @@ input[type="file"] + a, input[type="file"] + span {
     border-radius: 50%;
     border: 1px solid #ccc;
 }
-
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 250px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+}
 .wrapper {
     display: flex;
     flex-direction: column;

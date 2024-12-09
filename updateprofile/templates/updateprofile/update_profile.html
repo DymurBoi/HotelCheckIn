@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}">
-    <script src="{% static 'js/reserve_script.js' %}" defer></script>
-    <title>Update User</title>
-</head>
-<body>
+
 {% block content %}
     <div class="login-container">
         <div class="login-form">
-            <h1>Update Profile</h1>
+            
             <form method="POST" class="form-update" enctype="multipart/form-data">
+                <h1>Update Profile</h1>
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div class="header-buttons">
@@ -27,5 +20,4 @@
         </div>
     </div>
 {% endblock content %}
-</body>
-</html>
+

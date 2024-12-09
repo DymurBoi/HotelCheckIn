@@ -22,8 +22,9 @@
             <label for="id_address">Address</label>
             {{ users.address }}
         </div>
+        <div class="header-buttons">
+            <a class="btn apply-btn" href="{% url 'profile:update_profile' %}"><button class="btn-a">Edit Profile</button></a>
+            </div>
     </div>
-    <div class="header-buttons">
-    <a class="btn apply-btn" href="{% url 'profile:update_profile' %}"><button class="btn-a">Edit Profile</button></a>
-    </div>
+    
     {% endblock content %}
