@@ -1,32 +1,6 @@
+{% extends "payment_confirmed_base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Confirmation</title>
-    <link rel="stylesheet" href="{% static 'sortingroom/payment_confirmed.css' %}">
-</head>
-<body>
-    <header>
-        <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
-        <nav>
-            <ul>
-                <li><a href="{% url 'profile:home' request.session.pk %}">HOME</a></li>
-                <li><a href="#explore">EXPLORE</a></li>
-                <li><a href="#rooms">ROOMS</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
-        </nav>
-            <div class = "profile-container">
-                <a href="{% url 'profile:user_profile' %}" class="user-profile">
-                    <img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" />
-                    <strong>{{request.session.firstname}} {{request.session.lastname}}</strong>
-                </a>
-            </div>
-    </header>
-
+{% block content %}
     <div class="centerpoint">
         <div class="confirmation_box">
             <div class="image_container">
@@ -60,9 +34,8 @@
             </div>
 
             <div class="button-wrapper">
-                <a href="{% url 'profile:home' request.session.pk %}" class="back-btn">Back To Main</a>
+                <a href="{% url 'sortingroom:room_category' %}" class="back-btn">Back To Main</a>
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock content %}

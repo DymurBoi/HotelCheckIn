@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation</title>
+    <link rel="stylesheet" href="{% static 'sortingroom/payment_confirmed.css' %}">
+</head>
+<body>
+    <header>
+        <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="{% url 'sortingroom:room_category'%}">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class = "profile-container">
+            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
+        </div>
+    </header>
+    <main>
+    {% block content %}
+
+    {% endblock content %}
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Welcome to W Hotel, where luxury meets comfort. Experience the best hospitality in the heart of the city.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/about">Room Booking</a></li>
+                    <li><a href="/rooms">Rooms</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/explore">Explore</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:info@hotelname.com">info@whotel.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                <p>Address: 123 Hotel St, City, Country</p>
+            </div>
+            <div class="footer-section">
+                <h3>Social Media</h3>
+                <ul class="social-media">
+                    <li><a href="https://facebook.com/hotelname" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/hotelname" target="_blank">Twitter</a></li>
+                    <li><a href="https://instagram.com/hotelname" target="_blank">Instagram</a></li>
+                    <li><a href="https://linkedin.com/company/hotelname" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 W Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

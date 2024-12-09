@@ -5,15 +5,15 @@ from sortingroom.models import Reservation
 from dashboard.models import Room
 def sample_home(request,pk):
     users = users = get_object_or_404(CustomUser, pk=pk) 
-    return render(request, 'home.html', {'users': users})
+    return render(request, 'updateprofile/home.html', {'users': users})
 
 def sample(request):
-    return render(request,'sample.html')
+    return render(request,'updateprofile/sample.html')
 
 def user_profile(request):
     pk=request.session.get('pk')
     users = users = get_object_or_404(CustomUser, pk=pk) 
-    return render(request, 'user_profile.html', {'users': users})
+    return render(request, 'updateprofile/user_profile.html', {'users': users})
 
 def update_user(request):
     pk=request.session.get('pk')
@@ -31,7 +31,7 @@ def update_user(request):
     else:
         form = UserForm(instance=users)
 
-    return render(request, 'update_profile.html', {'users': users, 'form': form})
+    return render(request, 'updateprofile/update_profile.html', {'users': users, 'form': form})
 
 def reservation_list(request):
     pk=request.session.get('pk')
@@ -41,22 +41,5 @@ def reservation_list(request):
         'user':user_logged,
         'reservations':reservation
     }
-    return render(request,'reservations_list.html',context)
+    return render(request,'updateprofile/reservations_list.html',context)
 
-def room_view(request,pk):
-    user_logged=get_object_or_404(CustomUser,pk=pk)
-    reservation=get_object_or_404(Reservation,user=user_logged)
-    context={
-        'user':user_logged,
-        'reservation':reservation
-    }
-    if request.method=='POST':
-        room = get_object_or_404(Room, pk=reservation.room.pk)
-        if room.room_check_in==True:
-            room.room_check_in = False
-            room.save()
-        elif room.room_check_in==False:
-            room.room_check_in = True
-            room.save()
-        return redirect('profile:room_view',pk=user_logged.pk)
-    return render(request,'room.html',context)

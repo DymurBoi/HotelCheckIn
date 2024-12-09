@@ -192,14 +192,65 @@ select option {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Ensure the wrapper takes the full height of the screen */
+}
 
+main {
+    flex: 1; /* Make the main content area flexible to push the footer down */
+}
+footer {
+    background-color: #8b724e;
+    color: #ecf0f1;
+    padding: 20px 0;
+    margin-top: auto;
+}
 
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1800px;
+    margin: 0 auto;
+}
 
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 50px;
 
+}
 
+.footer-section h3 {
+    padding-bottom: 15px;
+}
 
+.footer-section p, .footer-section ul {
+    margin: 10px 0;
+}
 
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
 
+.footer-section ul li {
+    margin: 5px 0;
+}
 
+.footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
 
+.footer-section a:hover {
+    text-decoration: underline;
+}
 
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #454f58;
+}
