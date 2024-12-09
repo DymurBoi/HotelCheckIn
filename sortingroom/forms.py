@@ -3,6 +3,27 @@ from django.core.exceptions import ValidationError
 from .models import Reservation
 
 class ReservationForm(forms.ModelForm):
+    COUNTRIES = [
+    ('US', 'United States'),
+    ('CA', 'Canada'),
+    ('GB', 'United Kingdom'),
+    ('IN', 'India'),
+    ('JP', 'Japan'),
+    ('RU', 'Russia'),
+    ('ZA', 'South Africa'),
+    ('NG', 'Nigeria'),
+    ('KR', 'South Korea'),
+    ('CH', 'Switzerland'),
+    ('PH', 'Philippines'),
+    ('ID', 'Indonesia'),
+    ('AE', 'United Arab Emirates'),
+    ('QA', 'Qatar'),
+    ('BH', 'Bahrain'),
+    ('TR', 'Turkey'),
+]
+    
+    country = forms.ChoiceField(choices=COUNTRIES)
+
     class Meta:
         model = Reservation
         fields = [
@@ -24,3 +45,4 @@ class ReservationForm(forms.ModelForm):
             raise ValidationError("Check-out date must be after the check-in date.")
 
         return cleaned_data
+

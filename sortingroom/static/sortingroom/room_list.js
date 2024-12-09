@@ -6,7 +6,7 @@ function openRoomDialog(roomId, catId, roomPhoto, roomPrice, roomDesc) {
     // Update dialog content
     document.getElementById('dialog-category-id').innerText = `${catId} Room`;
     document.getElementById('dialog-room-photo').src = roomPhoto;
-    document.getElementById('dialog-room-price').innerText = `P${roomPrice}/night`;
+    document.getElementById('dialog-room-price').innerText = `₱${roomPrice}/night`;
     document.getElementById('dialog-room-desc').innerText = roomDesc;
 
     // Update the "Reserve" button to use the correct roomId
