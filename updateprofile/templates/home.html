@@ -13,15 +13,15 @@
         <img src="{% static 'images/logo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="{% url 'profile:home' users.pk %}">HOME</a></li>
-                <li><a href="{% url 'sortingroom:room_category'%}">EXPLORE</a></li>
-                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="{% url 'profile:home' request.session.pk %}">HOME</a></li>
+                <li><a href="#explore">EXPLORE</a></li>
+                <li><a href="{% url 'sortingroom:room_category' %}">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
         <div class="header-buttons">
-            <a href="{% url 'profile:user_profile' users.pk %}" class="user-profile"><img class="header-pfp" src="{{users.profile_pic.url}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
+            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{users.name}}</strong></a>
             <button onclick="viewReservations('{{users.pk}}')"class="btn book-btn">Reservations</button>
         </div>
     </header>

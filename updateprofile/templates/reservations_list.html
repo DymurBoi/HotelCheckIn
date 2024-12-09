@@ -13,9 +13,9 @@
         <img src="{% static 'images/logo.png' %}" alt="Logo">
         <nav>
             <ul>
-                <li><a href="{% url 'profile:home' user.pk %}">HOME</a></li>
+                <li><a href="{% url 'profile:home' request.session.pk %}">HOME</a></li>
                 <li><a href="#explore">EXPLORE</a></li>
-                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="{% url 'sortingroom:room_category' %}">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
