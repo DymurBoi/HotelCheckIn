@@ -9,24 +9,23 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <header>
-        <img src="{% static 'images/logo.png' %}" alt="Logo">
+        <a href="{% url 'account:homepage' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#explore">EXPLORE</a></li>
-                <li><a href="#rooms">ROOMS</a></li>
+                <li><a href="{% url 'account:homepage' %}">HOME</a></li>
+                <li><a href="{% url 'account:login' %}">RESERVATIONS</a></li>
+                <li><a href="{% url 'account:login' %}">ROOMS</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
         <div class="header-buttons">
             <a href="{% url 'account:login' %}">
-                <button class="btn">Login</button>
+                <button class="btn book-btn">Login</button>
             </a>
-            <a href="{% url 'account:login' %}">
-                <button class="btn">Book Now</button>
+            <a href="{% url 'account:signup' %}">
+                <button class="btn book-btn">Register</button>
             </a>
-           
         </div>
     </header>
 </head>

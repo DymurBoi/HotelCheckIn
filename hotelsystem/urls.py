@@ -17,13 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from django.conf import settings
+from django.conf import settings 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('profile/', include('updateprofile.urls')), 
-    path('account/', include('accounts.urls')),
-    path('sort/', include('sortingroom.urls')),
-    path('', include(('accounts.urls', 'account'), namespace='account')),
+   path('admin/', admin.site.urls),  # Admin Dashboard
+    path('account/', include('accounts.urls', namespace='account')),  # User Accounts (Signup, Login, etc.)
+    path('dashboard/', include('dashboard.urls')),  # Admin Dashboard for managing the system
+    path('rooms/', include('sortingroom.urls', namespace='sortingroom')),  # Room Management
+    path('profile/', include('updateprofile.urls', namespace='profile')),  # User Profile Management
+    path('', include('accounts.urls')),  # Default Home (from accounts)
 ]
 
-urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

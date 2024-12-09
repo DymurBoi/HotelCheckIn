@@ -11,6 +11,19 @@ body, html {
     scroll-behavior: smooth;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/sortingroom/hotel-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.1; /* Adjust opacity here */
+    z-index: -1; /* Make sure it stays behind the content */
+}
 
 
 header {
@@ -43,11 +56,16 @@ header a {
     border-bottom-color: transparent;
 }
 
-header a:hover {
+ul a:hover {
     color: #72614f;
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
     border-bottom-color: #72614f;
+    transition: all 0.3s ease;
+}
+
+.profile-container a:hover {
+    color: #6c543b;
     transition: all 0.3s ease;
 }
 
@@ -75,23 +93,40 @@ header li {
     transition: background-color 0.3s;
 }
 
-.btn:hover {
-    background-color: #7a5b43;
+.user-profile {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
 }
 
-.book-btn {
-    background-color: #8b724e; /* Different color for 'Book Now' button */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
 }
 
-.book-btn:hover {
-    background-color: #7a5b43;
+.img-pfp {
+    clip-path: circle();
+    display: block;
+    width: 100px; /* Adjust the size to a more reasonable value */
+    max-width: 100px;
+    height: 100px;
+    max-height: 100px;
 }
 
+.header-pfp {
+    clip-path: circle();
+    display: block;
+    width: 50px; /* Adjust the size to a more reasonable value */
+    max-width: 50px;
+    margin-right: 10px;
+}
 
 .centerpoint {
     display: flex;
     justify-content: center;
-    padding: 50px;
+    padding: 50px 0px 50px 0px;
     width: 100%;
 }
 
@@ -117,6 +152,35 @@ form div {
     flex-direction: column;
 }
 
+.form h2{
+    margin-top: 20px;
+}
+
+.room-info {
+    max-width: 80%;
+    background-color: white;
+    border-radius: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: 15px;
+    margin: 0px 12% 0px 12%;
+    margin-bottom: 30px;
+
+}
+
+.details{
+    line-height: 1.5;
+    font-size: 16px;
+    padding: 0px 0px 0px 15px;
+}
+
+.room-info img{
+    max-width: 130px;
+    height: auto;
+    border-radius: 20px;
+}
+
 form button{
     width: 20%;
 }
@@ -125,7 +189,6 @@ form button{
     display: flex;
     flex-direction: column;
 }
-
 
 .two-column {
     display: flex;
@@ -151,7 +214,6 @@ input, select, textarea {
     align-items: flex-end;
 }
 
-
 .next-btn {
     width: 25%;
     padding: 15px;
@@ -164,13 +226,78 @@ input, select, textarea {
     transition: background-color 0.3s;
 }
 
+.use-account-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 100%;
+}
 
+.use-account-info input{
+    max-width: 30px;
+    height: 20px;
+    margin: 0;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Ensure the wrapper takes the full height of the screen */
+}
 
+main {
+    flex: 1; /* Make the main content area flexible to push the footer down */
+}
+footer {
+    background-color: #8b724e;
+    color: #ecf0f1;
+    padding: 20px 0;
+    margin-top: auto;
+}
 
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1800px;
+    margin: 0 auto;
+}
 
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 50px;
 
+}
 
+.footer-section h3 {
+    padding-bottom: 15px;
+}
 
+.footer-section p, .footer-section ul {
+    margin: 10px 0;
+}
 
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
 
+.footer-section ul li {
+    margin: 5px 0;
+}
 
+.footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #454f58;
+}

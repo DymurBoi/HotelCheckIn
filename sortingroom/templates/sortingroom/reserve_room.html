@@ -1,105 +1,75 @@
+{% extends "reserve_room_base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Reservation</title>
-    <link rel="stylesheet" href="{% static 'sortingroom/reserve_room.css' %}">
-    <script src="{% static 'sortingroom/room_list.js' %}" defer></script>
-</head>
-<body>
-    <header>
-        <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
-        <nav>
-            <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#explore">EXPLORE</a></li>
-                <li><a href="#rooms">ROOMS</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
-        </nav>
-        <div class="header-buttons">
-            <button class="btn">Login</button>
-            <button class="btn book-btn">Book Now</button>
+{% block content %}
+<div class="centerpoint">
+    <div class="info_form">
+        <div class="room-info">
+            <div class="img-container">
+                <img src="{{ room.room_category.room_photo.url | default:'sortingroom/static/wifi.png' }}" alt="Room Photo">
+            </div>
+            <div class="details">
+                <h3>Reserved Room: {{ room.room_category.category_id }}</h3>
+                <p><strong>Price:</strong> ₱{{ room.room_category.room_price }} per night</p>
+            </div>
         </div>
-    </header>
-
-    <h1>Reserve Room: {{ room.room_type }}</h1>
-    <p>Price: ${{ room.room_price }}</p>
-
-    <div class="centerpoint">
-        <div class="info_form">
-            <form id="reservationForm" method="POST" action="{% url 'reserve_room' room.id %}">
-                <h2>Enter your details</h2><br>
-                {% csrf_token %}
-                <div class="info two-column">
-                    <div>
-                        <label for="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" required>
-                    </div>
-                    <div>
-                        <label for="last_name">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" required>
-                    </div>
+        
+        <form id="reservationForm" method="POST" action="{% url 'sortingroom:reserve_room' room.room_category.id %}">
+            {% csrf_token %}
+            <h2>Enter your details</h2>
+        
+            <div class="use-account-info">
+                <input type="checkbox" id="use_info_checkbox">
+                <label for="use_info_checkbox">Use my information</label>
+            </div>
+        
+            <div class="two-column">
+                <div>
+                    <label for="first_name">First Name</label>
+                    {{ form.first_name }}
                 </div>
-
-                <div class="info two-column">
-                    <div>
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div>
-                        <label for="country">Country/Region</label>
-                        <select id="country" name="country" required>
-                            <option value="" disabled selected>Select your country</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="GB">United Kingdom</option>
-                            <option value="AU">Australia</option>
-                            <option value="IN">India</option>
-                            <option value="PH">Philippines</option>
-                            <option value="SG">Singapore</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
-                            <option value="JP">Japan</option>
-                            <option value="CN">China</option>
-                            <option value="BR">Brazil</option>
-                            <option value="ZA">South Africa</option>
-                        </select>
-                    </div>
+                <div>
+                    <label for="last_name">Last Name</label>
+                    {{ form.last_name }}
                 </div>
-
-                <div class="info">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required>
+            </div>
+        
+            <div class="two-column">
+                <div>
+                    <label for="email">Email Address</label>
+                    {{ form.email }}
                 </div>
-
-                <div class="info two-column">
-                    <div>
-                        <label for="check_in">Check-in Date</label>
-                        <input type="date" id="check_in" name="check_in" required>
-                    </div>
-                    <div>
-                        <label for="check_out">Check-out Date</label>
-                        <input type="date" id="check_out" name="check_out" required>
-                    </div>
+                <div>
+                    <label for="country">Country/Region</label>
+                    {{ form.country }}
                 </div>
-                
-                <div class="info">
-                    <label for="special_request">Special Request</label>
-                    <textarea id="special_request" name="special_request" rows="3"></textarea>
+            </div>
+        
+            <div>
+                <label for="phone_number">Phone Number</label>
+                {{ form.phone }}
+            </div>
+        
+            <div class="two-column">
+                <div>
+                    <label for="check_in">Check-in Date</label>
+                    {{ form.check_in }}
                 </div>
-
-                <input type="hidden" name="room_id" value="{{ room.id }}">
-                <input type="hidden" name="room_price" value="{{ room.room_price }}">
-                
-                <div class="button-wrapper">
-                    <button type="submit" class="next-btn">Next Step ></button>
+                <div>
+                    <label for="check_out">Check-out Date</label>
+                    {{ form.check_out }}
                 </div>
-            </form>
-        </div>
+            </div>
+        
+            <div>
+                <label for="special_request">Special Request</label>
+                {{ form.special_request }}
+            </div>
+        
+            <div class="button-wrapper">
+                <button type="submit" class="next-btn">Next Step ></button>
+            </div>
+        </form>            
+        
     </div>
-</body>
-</html>
+</div>
+{% endblock content %}

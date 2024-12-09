@@ -1,7 +1,24 @@
 html {
     scroll-behavior: smooth;
 }
-
+body, html {
+    scroll-behavior: smooth;
+    height: 100%;            
+    margin: 0;                  
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/sortingroom/hotel-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.1; /* Adjust opacity here */
+    z-index: -1; /* Make sure it stays behind the content */
+}
 * {
     margin: 0;
     padding: 0;
@@ -39,13 +56,15 @@ header a {
     border-bottom-color: transparent;
 }
 
-header a:hover {
+ul a:hover {
     color: #72614f;
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
     border-bottom-color: #72614f;
     transition: all 0.3s ease;
 }
+
+
 
 header li {
     font-size: 15px;
@@ -69,6 +88,41 @@ header li {
     font-weight: bold;
     font-size: 16px; /* Make button text larger */
     transition: background-color 0.3s;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.profile-container a:hover {
+    color: #6c543b;
+    transition: all 0.3s ease;
+}
+
+.img-pfp {
+    clip-path: circle();
+    display: block;
+    width: 100px; /* Adjust the size to a more reasonable value */
+    max-width: 100px;
+    height: 100px;
+    max-height: 100px;
+}
+.header-pfp {
+    clip-path: circle();
+    display: block;
+    width: 50px; /* Adjust the size to a more reasonable value */
+    max-width: 50px;
+    margin-right: 10px;
 }
 
 .btn:hover {
@@ -351,9 +405,111 @@ dialog img{
     background: none;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Ensure the wrapper takes the full height of the screen */
+}
 
+main {
+    flex: 1; /* Make the main content area flexible to push the footer down */
+}
+footer {
+    background-color: #8b724e;
+    color: #ecf0f1;
+    padding: 20px 0;
+    margin-top: auto;
+}
 
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1800px;
+    margin: 0 auto;
+}
 
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 50px;
 
+}
 
+.footer-section h3 {
+    padding-bottom: 15px;
+}
 
+.footer-section p, .footer-section ul {
+    margin: 10px 0;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #454f58;
+}
+.custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Style for alert content box */
+.custom-alert-content {
+    background: white;
+    padding: 20px;
+    width: 400px;
+    max-width: 80%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Alert message text */
+.custom-alert-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* OK button styling */
+.custom-alert-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #7a5b43;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-alert-content button:hover {
+    background-color: #72614f;
+
+}

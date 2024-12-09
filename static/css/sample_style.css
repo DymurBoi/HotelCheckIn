@@ -1,3 +1,8 @@
+body, html {
+    scroll-behavior: smooth;
+    height: 100%;            
+    margin: 0;                  
+}
 * {
     margin: 0;
     padding: 0;
@@ -26,19 +31,46 @@ nav {
     justify-content: center;
 }
 
+ul a{
+    padding: 20px;
+}
+
 header a {
     font-size: 15px;
-    padding: 15px;
     text-decoration: none;
     color: rgb(6, 6, 6);
     border-bottom-color: transparent;
 }
 
-header a:hover {
+ul a:hover {
     color: #72614f;
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
     border-bottom-color: #72614f;
+    transition: all 0.3s ease;
+}
+
+.book-now{
+    background-color: #6c543b;
+    padding: 20px 20px 5px 20px;
+    color: #ffffff;
+    font-weight: 800;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.book-now:hover{
+    background-color: #947e66;
+    transition: all 0.3s ease;
+}
+
+.profile-container{
+    display: flex;
+}
+
+.profile-container a:hover {
+    color: #6c543b;
     transition: all 0.3s ease;
 }
 
@@ -47,11 +79,13 @@ header li {
     display: inline-block;
     text-decoration: none;
     padding: 5px 10px;
+    align-items: center;
 }
 
 .header-buttons {
     display: flex;
     gap: 15px; /* Increased spacing between buttons */
+    align-items: center;
 }
 
 .btn {
@@ -72,6 +106,12 @@ header li {
 
 .book-btn {
     background-color: #8b724e; /* Different color for 'Book Now' button */
+}
+
+.book-btn a{
+    background-color: #8b724e; /* Different color for 'Book Now' button */
+    color: #ffffff;
+
 }
 
 .book-btn:hover {
@@ -297,4 +337,67 @@ header li {
 .user-profile {
     display: flex;
     align-items: center; /* Aligns items vertically centered */
+    margin-right: 15px;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Ensure the wrapper takes the full height of the screen */
+}
+
+main {
+    flex: 1; /* Make the main content area flexible to push the footer down */
+}
+footer {
+    background-color: #8b724e;
+    color: #ecf0f1;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 50px;
+
+}
+
+.footer-section h3 {
+    padding-bottom: 15px;
+}
+
+.footer-section p, .footer-section ul {
+    margin: 10px 0;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #454f58;
 }

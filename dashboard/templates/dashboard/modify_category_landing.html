@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Categories</title>
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Modify Categories</h1>
+        <ul>
+            <li><a href="{% url 'dashboard:admin_landing' %}">Home</a></li>
+            <li><a href="{% url 'dashboard:add_or_modify_category' %}">Categories</a></li>
+            <li><a href="{% url 'dashboard:add_or_modify_room' %}">Rooms</a></li>
+            <li><a href="{% url 'dashboard:admin_logout' %}">Logout</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <div class="card-container">
+            <a href="{% url 'dashboard:add_category' %}">
+                <h2>Add Category</h2>
+            </a>
+        </div>
+
+        {% for category in categories %}
+        <div class="card-container">
+            <a href="{% url 'dashboard:modify_category' category.id %}">
+                <!-- Display the room photo -->
+                {% if category.room_photo %}
+                <img src="{{ category.room_photo.url }}" alt="Room Photo" class="room-photo">
+                {% else %}
+                <img src="{% static '../media/lizard.jpeg' %}" alt="Default Room Photo" class="room-photo">
+                {% endif %}
+
+                <h2>{{ category.category_id }}</h2>
+                <h2>{{ category.room_desc }}</h2>
+                <p>Edit this category</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="login-container">
+        <div class="login-form">
+            
+            <form method="POST" class="form-update" enctype="multipart/form-data">
+                <h1>Update Profile</h1>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="header-buttons">
+                    <button class="btn apply-btn" type="submit">Save</button>
+                    <a class="btn apply-btn" href="{% url 'profile:user_profile' %}">
+                    <button class="btn-a">Back to Profile</button>
+                    </a>            
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+

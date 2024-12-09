@@ -1,0 +1,481 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    scroll-behavior: smooth;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 90px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0px 5px rgb(0, 0, 0);
+    height: 100px;
+}
+
+header img {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+header a {
+    font-size: 15px;
+    padding: 15px;
+    text-decoration: none;
+    color: rgb(6, 6, 6);
+    border-bottom-color: transparent; /* Remove underline effect */
+}
+ul a:hover {
+    color: #72614f;
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+    border-bottom-color: #72614f;
+    transition: all 0.3s ease;
+}
+header a:hover {
+    color: rgb(6, 6, 6); /* Keep the same color on hover */
+    border-bottom-style: none; /* Remove the underline when hovering */
+    border-bottom-width: 0; /* Remove underline when hovering */
+    transition: none; /* Remove transition effect */
+}
+
+
+header li {
+    font-size: 15px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.header-buttons {
+    display: flex;        /* Use flexbox layout */
+    align-items: center; /* Center items vertically */
+    gap: 15px;  
+}
+
+.btn {
+    background-color: #6c543b;
+    color: white;
+    padding: 15px 30px; /* Increased padding for larger buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px; /* Make button text larger */
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #7a5b43;
+}
+
+.book-btn {
+    background-color: #8b724e; /* Different color for 'Book Now' button */
+}
+
+.book-btn:hover {
+    background-color: #7a5b43;
+}
+
+.banner {
+    position: relative; /* Ensure the text can be positioned relative to the banner */
+    width: 100%;
+}
+
+.banner img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    filter: sepia(60%) brightness(90%) contrast(90%);
+    
+}
+
+.container_mt-5{
+    padding-top: 50px;
+}
+
+.centered-text {
+    position: absolute; /* Allows free positioning within the .banner container */
+    top: 50%; /* Center the text vertically */
+    left: 50%; /* Center the text horizontally */
+    transform: translate(-50%, -50%); /* Adjust the position to be exactly centered */
+    color: white; /* Change text color */
+    font-size: 44px; /* Adjust text size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: Add a shadow for better contrast */
+    text-align: center;
+}
+
+.arrow-image {
+    margin-top: 50px;
+    transition: transform 0.3s;
+}
+
+.arrow-image:hover {
+    transform: translateY(5px);
+}
+
+.btn-primary {
+    background-color: #ffffff; /* Change to your desired color */
+    border-color: #8b724e; /* Change border color if needed */
+    border-width: 1px; 
+    border-style: solid;
+    color:#8b724e;
+}
+
+.btn-secondary {
+    background-color: #ffffff; 
+    border-color: #8b724e; 
+    border-width: 1px; 
+    border-style: solid;
+    color:#8b724e;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    background-color: #8b724e;
+    color: white;
+    border-color: #8b724e;
+}
+
+.btn.active {
+    background-color: #8b724e;
+    color: white;
+    border-color: #8b724e;
+}
+
+.mb-3 a{
+    text-decoration: none;
+}
+
+
+.centered-text p {
+    margin-top: 50px;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 16px;
+}
+
+
+.mb-3{
+    padding-left: 10em;
+    padding-right: 10em;
+}
+
+.row {
+    padding-top: 5em;
+    padding-left: 10em;
+    padding-right: 10em;
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: flex-start; 
+}
+
+.col-md-4 {
+    padding-bottom: 5em;
+    flex: 0 0 30%; 
+    max-width: 30%; 
+    margin-bottom: 20px;
+    margin-right: 39px;
+}
+
+
+.card {
+    height: 380px; 
+    border: 1px solid #ccc; 
+    border-radius: 3px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    position: relative;
+}
+
+
+.card img {
+    object-fit: cover;
+    width: 100%; 
+    height: 12em; 
+}
+
+.card-body {
+    padding: 15px; 
+    text-align: center; 
+}
+
+.card-body hr{
+    width: 100%;
+    margin: 0;
+}
+
+.card-title {
+    color: #7a5b43;
+    padding-bottom: 1em;
+    text-align: start;
+    font-size: 1.25rem; /* Larger font size for the title */
+    font-weight: bold; /* Bold font for emphasis */
+}
+
+.card-text {
+    padding-bottom: 1em;
+    text-align: start;
+    font-size: 1rem; /* Regular font size for price */
+    color: #656565; /* Darker text color for better readability */
+}
+
+.card-inclusion{
+    color: #7a5b43;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    display: flex; /* Ensure the row uses flexbox */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+
+.inclusion-icon img {
+    padding-left: 10px;
+    height: 25px;
+    width: 25px;
+}
+/* Optional: Add hover effect to the card */
+.card:hover {
+    transform: scale(1.02); /* Slightly enlarge the card on hover */
+}
+
+.centerpoint {
+    display: none;
+    position: relative; 
+    margin: 0 auto;
+}
+
+dialog {
+    
+    position: relative;
+    inset: 0.5rem;
+    margin: auto;
+    border: 0px;
+    display: flex;
+    width: 50%;
+    height: 500px;
+    z-index: 1000;
+
+}
+
+dialog[open] {
+    display: flex; /* When the dialog is open, it should display */
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+dialog img{
+    object-fit: cover;
+    height: 100%;
+    width: 50%;
+}
+
+.dialog-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 4rem 0rem 4rem 3rem;
+}
+
+.dialog-inclusion{
+    color: #7a5b43;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    padding-right: 4em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.dialog-info button{
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #8b724e;
+    width: 170px; /* Set the desired width */
+    height: 4em;
+    transition: all 0.2s ease;
+}
+
+.dialog-info button:hover{
+    background-color: #72614f;
+
+}
+
+.dialog-info p{
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+#dialog-room-price{
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-size: 18px;
+
+}
+
+.room_selection-dialog button{
+    position: absolute;
+    padding-left: 1em;
+    height: 25px;
+    width: 25px;
+    margin-bottom: 100px;
+    outline: none;
+    border: none;
+}   
+
+#close-button {
+    margin: 1rem 1rem 4rem 1rem;
+    height: 6%;
+    width: 15%;
+    padding: 0px;
+    border: none;
+    background: none;
+}
+
+.img-pfp {
+    clip-path: circle();
+    display: block;
+    width: 100px; /* Adjust the size to a more reasonable value */
+    max-width: 100px;
+    height: 100px;
+    max-height: 100px;
+}
+.header-pfp {
+    clip-path: circle();
+    display: block;
+    width: 50px; /* Adjust the size to a more reasonable value */
+    max-width: 50px;
+    margin-right: 10px;
+}
+.user-profile {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+}
+/* Profile CSS */
+/* Container for the profile update section */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+/* Profile header styling */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 1em;
+    background-color: #D0C3A6; /* Sample placeholder color */
+}
+
+.profile-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.edit-icon {
+    color: #D0C3A6; /* Adjust color to match design */
+    cursor: pointer;
+    margin-left: 5px;
+}
+.res-name{
+    margin-top: 30px;
+    margin-left: 9%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Ensure the wrapper takes the full height of the screen */
+}
+
+main {
+    flex: 1; /* Make the main content area flexible to push the footer down */
+}
+footer {
+    background-color: #8b724e;
+    color: #ecf0f1;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 50px;
+
+}
+
+.footer-section h3 {
+    padding-bottom: 15px;
+}
+
+.footer-section p, .footer-section ul {
+    margin: 10px 0;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #454f58;
+}

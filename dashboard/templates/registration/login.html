@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+    
+</head>
+<body>
+    <header>
+        <h1>Welcome Back!</h1>
+    </header>
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <p>Access your account by entering your credentials below.</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility()">SHOW</span>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const toggleText = document.querySelector('.toggle-password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleText.textContent = 'HIDE';
+            } else {
+                passwordField.type = 'password';
+                toggleText.textContent = 'SHOW';
+            }
+        }
+    </script>
+</body>
+</html>

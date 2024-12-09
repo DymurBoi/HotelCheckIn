@@ -3,6 +3,25 @@
     padding: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+body {
+    position: relative;
+    margin: 0;
+    height: 100%; /* Full viewport height */
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/images/loginbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.3; /* Adjust opacity here */
+    z-index: -1; /* Make sure it stays behind the content */
+}
 
 header {
     display: flex;
@@ -10,8 +29,8 @@ header {
     align-items: center;
     padding: 10px 90px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0 0px 5px rgb(164, 27, 27);
-    height: 80px;
+    box-shadow: 0 0px 5px rgb(0, 0, 0);
+    height: 100px;
 }
 
 header img {
@@ -26,25 +45,57 @@ nav {
     justify-content: center;
 }
 
+ul a{
+    padding: 20px;
+}
+
 header a {
-    margin: 5px;
+    font-size: 15px;
     text-decoration: none;
     color: rgb(6, 6, 6);
-    font-weight: bold;
+    border-bottom-color: transparent;
+}
+
+ul a:hover {
+    color: #72614f;
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+    border-bottom-color: #72614f;
+    transition: all 0.3s ease;
+}
+
+.book-now{
+    background-color: #6c543b;
+    padding: 20px 20px 5px 20px;
+    color: #ffffff;
+    font-weight: 800;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.book-now:hover{
+    background-color: #947e66;
+    transition: all 0.3s ease;
+}
+
+.profile-container a:hover {
+    color: #6c543b;
     transition: all 0.3s ease;
 }
 
 header li {
-    color:rgba(127, 22, 22, 0.737);
-    font-size: 20px;
+    font-size: 15px;
     display: inline-block;
     text-decoration: none;
     padding: 5px 10px;
+    align-items: center;
 }
 
 .header-buttons {
     display: flex;
     gap: 15px; /* Increased spacing between buttons */
+    align-items: center;
 }
 
 .btn {
@@ -60,25 +111,29 @@ header li {
 }
 
 .btn:hover {
-    background-color: #b9611e;
+    background-color: #7a5b43;
 }
 
 .book-btn {
     background-color: #8b724e; /* Different color for 'Book Now' button */
 }
 
+.book-btn a{
+    background-color: #8b724e; /* Different color for 'Book Now' button */
+    color: #ffffff;
+
+}
+
 .book-btn:hover {
     background-color: #7a5b43;
 }
-
-
 
 /* Centering the login container */
 body .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
+    height: 70vh; /* Full viewport height */
 }
 
 /* Centered login form */
@@ -121,4 +176,35 @@ body .login-container {
 
 .login-form button:hover {
     background-color: #555;
+}
+.input-group {
+    margin-bottom: 12px;
+    position: relative; /* Enables absolute positioning of child elements */
+}
+
+.input-group input {
+    /* Ensure input takes full width of the container */
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.toggle-password {
+    position: absolute;
+    bottom: -10px; /* Adjust to position below the input */
+    right: 10px; /* Position at the right edge of the input */
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #000000;
+    text-decoration: none;
+}
+
+.toggle-password:hover {
+    transition: none;
+    color: #666;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
 }

@@ -1,0 +1,21 @@
+{% extends "no_rooms_base.html" %}
+{% load static %}
+{% block content %}
+    <div id="custom-alert" class="custom-alert" style="display: none;">
+        <div class="custom-alert-content">
+            <p>W Hotel says: No rooms are available for this category. Please select a different category.</p>
+            <button id="ok-button">Return Home</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('custom-alert').style.display = 'flex';
+
+
+            document.getElementById('ok-button').addEventListener('click', function () {
+                window.location.href = "{% url 'sortingroom:room_category' %}";
+            });
+        });
+    </script>
+    {% endblock content %}

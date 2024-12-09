@@ -1,31 +1,6 @@
+{% extends "room_list_base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooms</title>
-    <link rel="stylesheet" href="{% static 'sortingroom/room_list.css' %}">
-    <script src="{% static 'sortingroom/room_list.js' %}" defer></script>
-</head>
-<body>
-    <header>
-        <img src="{% static 'sortingroom/hotellogo.png' %}" alt="Logo">
-        <nav>
-            <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#explore">EXPLORE</a></li>
-                <li><a href="#rooms">ROOMS</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
-        </nav>
-        <div class="header-buttons">
-            <button class="btn">Login</button>
-            <button class="btn book-btn">Book Now</button>
-        </div>
-    </header>
-
+{% block content %}
     <div class="banner">
         <img src="{% static 'sortingroom/banner.jpg' %}" alt="Banner">
         <div class="centered-text">
@@ -46,17 +21,17 @@
         </div>
 
         <div class="row">
-            {% for room in rooms %}
+            {% for room in room_category %}
                 <div class="col-md-4 mb-4">
-                    <div class="card" onclick="openDialog('{{ room.id }}', '{{ room.room_photo.url }}', '{{ room.room_type }}', '{{ room.room_price }}', '{{ room.room_desc }}')">
+                    <div class="card" onclick="openDialog('{{ room.id }}', '{{ room.category_id }}', '{{ room.room_photo.url }}', '{{ room.room_price }}', '{{ room.room_desc }}')">
                         {% if room.room_photo %}
-                            <img src="{{ room.room_photo.url }}" class="card-img-top" alt="{{ room.room_type }}">
+                            <img src="{{ room.room_photo.url }}" class="card-img-top" alt="{{ room.category_id }}">
                         {% else %}
                             <img src="{% static 'sortingroom/default_image.jpg' %}" class="card-img-top" alt="No image available">
                         {% endif %}
                         <div class="card-body">
-                            <h5 class="card-title">{{ room.room_type }}</h5>
-                            <p class="card-text">${{ room.room_price }}</p>
+                            <h5 class="card-title">{{ room.category_id }}</h5>
+                            <p class="card-text">P{{ room.room_price }}</p>
                             <p class="card-text">Rooms Available: {{ room.rooms_available }}</p>
                             <hr>
                             <div class="card-inclusion">
@@ -72,13 +47,13 @@
                 </div>   
             {% endfor %}
         </div>
-        
+
         <!-- Reusable dialog -->
         <div class="centerpoint">
             <dialog id="room_selection-dialog">
                 <img id="dialog-room-photo" src="" alt="Room Photo">
                 <div class="dialog-info">
-                    <h1 id="dialog-room-type"></h1>
+                    <h1 id="dialog-category-id"></h1>
                     <p id="dialog-room-price"></p>
                     <p id="dialog-room-desc"></p>
                     <div class="dialog-inclusion">
@@ -89,15 +64,13 @@
                             <img src="{% static 'sortingroom/wifi.png' %}" alt="WiFi">                   
                         </div>
                     </div>
-                    <button onclick="goToReserve('')">Reserve Now</button>
+                    <button id="reserve-button">Reserve Now</button>
+                    
                 </div>
                 <button id="close-button" type="button" onclick="closeDialog()" aria-label="Close dialog">
                     <img src="{% static 'sortingroom/close-button.png' %}" alt="Close">
                 </button>
             </dialog>
         </div> 
-        
     </div>
-
-</body>
-</html>
+{% endblock content %}

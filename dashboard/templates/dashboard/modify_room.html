@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Room</title>
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Modify Room</h1>
+        <ul>
+            <li><a href="{% url 'dashboard:admin_landing' %}">Home</a></li>
+            <li><a href="{% url 'dashboard:add_or_modify_category' %}">Categories</a></li>
+            <li><a href="{% url 'dashboard:add_or_modify_room' %}">Rooms</a></li>
+            <li><a href="{% url 'dashboard:admin_logout' %}">Logout</a></li>
+        </ul>
+    </header>
+    <div class="container">
+     <div class="card-container">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p>hai</p>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

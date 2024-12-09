@@ -4,22 +4,49 @@
 <html lang="en">
 <head>
     {% block title %}Login{% endblock %}
+    <!-- Include Font Awesome for the eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+    </style>
 </head>
 <body>
 {% block content %}
 <div class="login-container">
     <div class="login-form">
         <h2>Login</h2>
-        <form method="post">
+        <form method="POST">
             {% csrf_token %}
-            {{form.as_p}}
-            
-            <button type="submit">Login</button>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility()">SHOW</span>
+            </div>
+            <button type="submit">Sign In</button>
+            {% if messages %}
+                <p style="color: red;">{% for message in messages %}{{ message }}{% endfor %}</p>
+            {% endif %}
         </form>
-
-       <p>Don't have an account? <a href="{% url 'account:signup' %}">Sign up</a></p>  
+        <p>Don't have an account? <a href="{% url 'account:signup' %}">Sign up</a></p>
     </div>
 </div>
+
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById('password');
+        const toggleText = document.querySelector('.toggle-password');
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleText.textContent = 'HIDE';
+        } else {
+            passwordField.type = 'password';
+            toggleText.textContent = 'SHOW';
+        }
+    }
+</script>
 {% endblock %}
 </body>
 </html>

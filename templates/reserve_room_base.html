@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+    <link rel="stylesheet" href="{% static 'sortingroom/reserve_room.css' %}">
+    <script src="{% static 'sortingroom/room_list.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <a href="{% url 'sortingroom:room_category' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'sortingroom:room_category' %}">HOME</a></li>
+                <li><a href="{% url 'profile:reservations' %}">RESERVATIONS</a></li>
+                <li><a href="{% url 'sortingroom:room_category' %}">ROOMS</a></li>
+                <li><a href="{% url 'sortingroom:about' %}">ABOUT</a></li>
+                <li><a href="{% url 'sortingroom:about' %}#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <a href="{% url 'profile:user_profile' %}" class="user-profile"><img class="header-pfp" src="{{request.session.profile_pic}}" alt="user pfp" /> <strong>{{request.session.firstname}} {{request.session.lastname}}</strong></a>
+            <a href="{% url 'profile:logout' %}">
+                <button class="btn book-btn">Logout</button>
+            </a>
+        </div>
+    </header>
+    <main>
+    {% block content %}
+
+    {% endblock content %}
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Welcome to W Hotel, where luxury meets comfort. Experience the best hospitality in the heart of the city.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/about">Room Booking</a></li>
+                    <li><a href="/rooms">Rooms</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/explore">Explore</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:info@hotelname.com">info@whotel.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                <p>Address: 123 Hotel St, City, Country</p>
+            </div>
+            <div class="footer-section">
+                <h3>Social Media</h3>
+                <ul class="social-media">
+                    <li><a href="https://facebook.com/hotelname" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/hotelname" target="_blank">Twitter</a></li>
+                    <li><a href="https://instagram.com/hotelname" target="_blank">Instagram</a></li>
+                    <li><a href="https://linkedin.com/company/hotelname" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 W Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // Get DOM elements
+    const checkbox = document.getElementById("use_info_checkbox");
+    const firstNameInput = document.querySelector("[name='first_name']");
+    const lastNameInput = document.querySelector("[name='last_name']");
+    const emailInput = document.querySelector("[name='email']");
+    const phoneInput = document.querySelector("[name='phone']");
+
+    // User's data passed from Django template
+    const userData = {
+        first_name: "{{ users.firstname|default:''|escapejs }}",
+        last_name: "{{ users.lastname|default:''|escapejs }}",
+        email: "{{ users.username|default:''|escapejs }}",
+        phone: "{{ users.phone_number|default:''|escapejs }}"
+    };
+
+    // Add event listener for the checkbox
+    if (checkbox) {
+        checkbox.addEventListener("change", function () {
+            if (this.checked) {
+                // Pre-fill form inputs with user data
+                if (firstNameInput) firstNameInput.value = userData.first_name || "";
+                if (lastNameInput) lastNameInput.value = userData.last_name || "";
+                if (emailInput) emailInput.value = userData.email || "";
+                if (phoneInput) phoneInput.value = userData.phone || "";
+            } else {
+                // Clear form inputs when unchecked
+                if (firstNameInput) firstNameInput.value = "";
+                if (lastNameInput) lastNameInput.value = "";
+                if (emailInput) emailInput.value = "";
+                if (phoneInput) phoneInput.value = "";
+            }
+        });
+    }
+});
+
+</script>

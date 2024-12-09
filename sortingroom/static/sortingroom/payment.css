@@ -3,6 +3,19 @@ body, html {
     height: 100%;            
     margin: 0;                  
 }
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/sortingroom/hotel-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.1; /* Adjust opacity here */
+    z-index: -1; /* Make sure it stays behind the content */
+}
 
 * {
     margin: 0;
@@ -10,8 +23,6 @@ body, html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     scroll-behavior: smooth;
 }
-
-
 
 header {
     display: flex;
@@ -43,11 +54,16 @@ header a {
     border-bottom-color: transparent;
 }
 
-header a:hover {
+ul a:hover {
     color: #72614f;
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
     border-bottom-color: #72614f;
+    transition: all 0.3s ease;
+}
+
+.profile-container a:hover {
+    color: #6c543b;
     transition: all 0.3s ease;
 }
 
@@ -75,27 +91,46 @@ header li {
     transition: background-color 0.3s;
 }
 
-.btn:hover {
-    background-color: #7a5b43;
+.user-profile {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
 }
 
-.book-btn {
-    background-color: #8b724e; /* Different color for 'Book Now' button */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
 }
 
-.book-btn:hover {
-    background-color: #7a5b43;
+.img-pfp {
+    clip-path: circle();
+    display: block;
+    width: 100px; /* Adjust the size to a more reasonable value */
+    max-width: 100px;
+    height: 100px;
+    max-height: 100px;
+}
+
+.header-pfp {
+    clip-path: circle();
+    display: block;
+    width: 50px; /* Adjust the size to a more reasonable value */
+    max-width: 50px;
+    margin-right: 10px;
 }
 
 
 .centerpoint {
     display: flex;
     justify-content: center;
-    padding: 50px;
     width: 100%;
 }
 
 .payment_form {
+    margin-top: 50px;
+    margin-bottom: 150px;
     width: 100%;
     max-width: 600px;
     padding: 40px;
@@ -151,6 +186,10 @@ select {
     box-sizing: border-box;
 }
 
+select option {
+    font-size: 15px; /* Indirectly increases the height */
+}
+
 .button-wrapper {
     align-items: flex-end;
 }
@@ -167,14 +206,65 @@ select {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Ensure the wrapper takes the full height of the screen */
+}
 
+main {
+    flex: 1; /* Make the main content area flexible to push the footer down */
+}
+footer {
+    background-color: #8b724e;
+    color: #ecf0f1;
+    padding: 20px 0;
+    margin-top: auto;
+}
 
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1800px;
+    margin: 0 auto;
+}
 
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 50px;
 
+}
 
+.footer-section h3 {
+    padding-bottom: 15px;
+}
 
+.footer-section p, .footer-section ul {
+    margin: 10px 0;
+}
 
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
 
+.footer-section ul li {
+    margin: 5px 0;
+}
 
+.footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
 
+.footer-section a:hover {
+    text-decoration: underline;
+}
 
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #454f58;
+}

@@ -1,19 +1,9 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from datetime import date
+from dashboard.models import Room
 
 # Create your models here.
-
-class Room(models.Model):
-    room_photo = models.ImageField(default = 'fallback.png', blank=True)
-    room_type = models.CharField(max_length=30)
-    room_desc = models.TextField(max_length=200, blank=True)
-    room_price = models.DecimalField(max_digits=10, decimal_places=2)
-    rooms_available = models.IntegerField(default=0)
-
-    def __str__(self):
-        return f"{self.room_type} - ${self.room_price}"
-    
 
 class Reservation(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
@@ -37,13 +27,18 @@ class Reservation(models.Model):
             raise ValidationError("Check-in date cannot be in the past.")
 
     def __str__(self):
-        return f'Reservation for {self.first_name} {self.last_name} - {self.room.room_type}'
+        return f'Reservation for {self.first_name} {self.last_name} - {self.room.room_category.category_id} Room {self.room.room_id}'
     
 
 class Payment(models.Model):
-    reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
-    payment_total = models.DecimalField(max_digits=10, decimal_places=3, blank=True, null=True)
+    reservation = models.OneToOneField(Reservation, on_delete=models.CASCADE)
+    payment_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     payment_method = models.CharField(max_length=20, null=True)
+    payment_date = models.DateField(null=True, blank=True)
     payment_status = models.CharField(max_length=20, default="Pending")
+
+
+    def __str__(self):
+        return f'Room ID:{self.reservation.room.room_id} {self.reservation.room.room_category.category_id}- {self.payment_total} - {self.payment_method} - {self.payment_status} (Payment ID: {self.id})'
 
 
