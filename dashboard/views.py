@@ -176,3 +176,13 @@ def modify_category_landing(request):
 def admin_logout(request):
     logout(request)
     return redirect('dashboard:login')
+
+@login_required
+def check_out(request, room_id):
+    res = get_object_or_404(Reservation, pk=room_id)
+    room=get_object_or_404(Room,room_id=res.room.room_id)
+    room.is_available=True
+    room.save()
+    res.delete()
+    # After deletion, redirect to the admin landing page or other desired page
+    return redirect('dashboard:admin_landing')
