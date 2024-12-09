@@ -148,3 +148,8 @@ def payment_confirmed(request, payment_id):
         'reservation': reservation,
         'payment': payment,
     })
+    
+def about(request):
+    pk=request.session.get('pk')
+    users = users = get_object_or_404(CustomUser, pk=pk) 
+    return render(request, 'sortingroom/about.html', {'users': users} )
