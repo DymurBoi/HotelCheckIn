@@ -57,7 +57,7 @@ operational efficiency.
 ---
 
 ## Resources
-+ ### Gantt Chart: https://docs.google.com/spreadsheets/d/10X4PsZ8iKvNVoqG9-ivCJzsVwwPAFHjcS6c7ZeqiVvA/edit?usp=sharing
-+ ### ERD: https://lucid.app/lucidchart/462e9219-4281-495e-9e21-0738e96c3821/edit?viewport_loc=-1243%2C-194%2C4344%2C1900%2C0_0&invitationId=inv_b68969f9-dff7-48f7-a1ea-9f615092185d
-+ ### UI/UX Design: https://www.figma.com/design/Zijdajrx19zIHtqJmugrH4/IM2?node-id=0-1&t=0VgVDsGqaw3Wh3ge-1
++ ### <a href="https://github.com/DymurBoi/HotelCheckIn/blob/main/documents/Hotel%20Check-In%20System%20Gantt%20Chart.png">Gantt Chart</a>
++ ### <a href="https://github.com/DymurBoi/HotelCheckIn/blob/main/documents/Hotel%20Check-In%20System%20ERD.png">ERD</a>
++ ### <a href="https://github.com/DymurBoi/HotelCheckIn/blob/main/documents/Hotel%20Check-In%20System%20Design.pdf">UI/UX Design</a>
 
