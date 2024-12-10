@@ -74,7 +74,7 @@ Here are the following steps in order to run the app:
 ### 👤 Profile Management
 + User is able to manage the details of the account
 
-### 🛎️ Check-In/Out Functionality
+### 🛎️ Check Out Functionality
 + Admin is able to check in or check out a user if they have a reservation
 
 ### 📝 Sorting Room Categories
