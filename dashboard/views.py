@@ -43,14 +43,16 @@ def admin_landing(request):
 
     # Booked rooms: is_available=False
     rooms_booked = Room.objects.filter(is_available=False)
-
+    res=Reservation.objects.filter(room__is_available=False)
+    
     # Reservations: Include only reservations for booked rooms
 
     context = {
         'admin_id': admin_id,
         'username': username,
         'rooms_available': rooms_available,
-        'rooms_booked': rooms_booked,  
+        'rooms_booked': rooms_booked,
+        'try':res  
     }
 
     return render(request, 'dashboard/admin_landing.html', context)
@@ -174,3 +176,13 @@ def modify_category_landing(request):
 def admin_logout(request):
     logout(request)
     return redirect('dashboard:login')
+
+@login_required
+def check_out(request, room_id):
+    res = get_object_or_404(Reservation, pk=room_id)
+    room=get_object_or_404(Room,room_id=res.room.room_id)
+    room.is_available=True
+    room.save()
+    res.delete()
+    # After deletion, redirect to the admin landing page or other desired page
+    return redirect('dashboard:admin_landing')

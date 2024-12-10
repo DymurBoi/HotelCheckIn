@@ -71,73 +71,56 @@ h2{
     color: #7C6A46;
 }
 
-.login-container {
+body .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;
-    padding: 20px;
+    height: 70vh; /* Full viewport height */
 }
-
-.login-card {
-    background: white;
+.login-form {
+    background-color: rgba(255, 255, 255, 0.75); /* 75% opacity */
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 420px; 
     text-align: center;
+    height: 350px;
 }
 
-.login-card h2 {
-    margin-bottom: 15px;
-    color: #7C6A46;
-    font-size: 1.8em;
-}
-
-.login-card p {
-    color: #666;
+.login-form h2 {
     margin-bottom: 20px;
-    font-size: 1em;
 }
 
-/* Form Styles */
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.input-group label {
+.login-form label {
+    right: 10px;
     display: block;
+    text-align: left;
     margin-bottom: 5px;
-    font-weight: bold;
-    color: #7C6A46;
 }
 
-.input-group input {
-    width: 100%;
+.login-form input {
+    width: 90%;
     padding: 10px;
-    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1em;
 }
 
-/* Button Styles */
-.login-button {
+
+
+.login-form button {
     width: 100%;
     padding: 10px;
-    background-color: #7C6A46;
+    background-color: #333;
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    bottom : 50px;
 }
 
-.login-button:hover {
-    background-color: #5b4a32;
+.login-form button:hover {
+    background-color: #555;
 }
 
 .container {
@@ -149,9 +132,66 @@ h2{
     padding: 40px;
 }
 
+.card-container2 {
+    width: 250px;
+    height: 433px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+.card-container2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-container2 h2 {
+    color: #7C6A46;
+    font-size: 1.4em;
+}
+
+.card-container2 p {
+    color: #666;
+    font-size: 0.95em;
+}
+
+.card-container2 input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.card-container2 button {
+    width: 100%;
+    padding: 10px;
+    background-color: #7C6A46;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 3px
+}
+
+.card-container2 img{
+    padding-top: 20px;
+    width: 190px;
+    height: 150px;
+
+}
+
 .card-container {
     width: 250px;
-    height: 350px;
+    height: 360px;
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -196,6 +236,7 @@ h2{
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 3px
 }
 
 .card-container img{
