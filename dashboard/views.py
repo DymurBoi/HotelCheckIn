@@ -39,7 +39,7 @@ def admin_landing(request):
     booked_room_ids = Room.objects.filter(is_available=False).values_list('room_id', flat=True)
 
     # Available rooms: is_available=True and not in reserved rooms
-    rooms_available = Room.objects.filter(is_available=True).exclude(id__in=reserved_room_ids)
+    rooms_available = Room.objects.filter(is_available=True)
 
     # Booked rooms: is_available=False
     rooms_booked = Room.objects.filter(is_available=False)
